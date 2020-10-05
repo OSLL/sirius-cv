@@ -1,0 +1,4 @@
+import numpy as np
+from google.colab.patches import cv2_imshow
+img = cv2.imread('road.jpg',0)
+cv2_imshow(img) 
