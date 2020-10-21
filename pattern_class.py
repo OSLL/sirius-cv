@@ -10,5 +10,5 @@ class Pattern:
 		pass
 
 	def comparekps(self, test_kps, test_des, query_kps, query_des,
-								method=cv.NORM_HAMMING, crossCheck=True, flags=2):
+		       method=cv.NORM_HAMMING, crossCheck=True, flags=2):
 		pass
