@@ -17,8 +17,6 @@ class Deriv(Pattern):
         bf = cv.BFMatcher(method, crossCheck=crossCheck)
         matches = bf.match(test_des, query_des)
         matches = sorted(matches, key=lambda x: x.distance)
-        res_img = cv.drawMatches(self.test_img, test_kps,
-                                 self.query_img, query_kps,
-                                 matches[:10], flags=flags,
-                                 outImg=None)
+        res_img = cv.drawMatches(self.test_img, test_kps, self.query_img, query_kps,
+                                 matches[:10], flags=flags, outImg=None)
         return res_img
