@@ -17,8 +17,8 @@ test_analyzer = Analyzer(cv2.imread("test_image_1.jpg"))
 sign_analyzer.plot_points()
 test_analyzer.plot_points()
 
-# Расскомментируете следующие строки, чтобы keypoints для каждого
-# изображения
+# Расскомментируете следующие строки, чтобы вывести keypoints для
+# каждого изображения
 # show_image_keypoints(sign_analyzer)
 # show_image_keypoints(test_analyzer)
 
