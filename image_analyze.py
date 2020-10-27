@@ -14,7 +14,7 @@ class ImageAnalyze(BaseImageAnalyze):
 
     def match_images(self, detected_objects,
                      method=cv2.NORM_HAMMING, crossCheck=True, depth=10,
-                     flags=2):
+                     flags=2, k_group=0.2):
         detected_object_1, detected_object_2 = detected_objects
         bf = cv2.BFMatcher(method, crossCheck=crossCheck)
         matches = bf.match(detected_object_1[1], detected_object_2[1])
@@ -23,4 +23,47 @@ class ImageAnalyze(BaseImageAnalyze):
                                  self.image_2, detected_object_2[0],
                                  matches[:depth], flags=flags,
                                  outImg=None)
+        list_kp1 = []
+        list_kp2 = []
+        rows1 = self.image_1.shape[0]
+        cols1 = self.image_1.shape[1]
+        rows2 = self.image_2.shape[0]
+        cols2 = self.image_2.shape[1]
+
+        for mat in matches[:depth]:
+            img2_idx = mat.trainIdx
+            (x2, y2) = detected_object_2[0][img2_idx].pt
+            list_kp2.append((x2 + cols1, y2))
+        points_x = list(map(lambda z: z[0], list_kp2))
+        points_y = list(map(lambda z: z[1], list_kp2))
+        list_objects = self.group_points(points_x, points_y, k_group)
+        for rect in list_objects:
+            rect_x = rect[0]
+            rect_y = rect[1]
+            x = sum(rect_x) / len(rect_x)
+            y = sum(rect_y) / len(rect_y)
+            x1 = x - max(max(rect_x) - x, x - min(rect_x))
+            y1 = y - max(max(rect_y) - y, y - min(rect_y))
+            x2 = x + max(max(rect_x) - x, x - min(rect_x))
+            y2 = y + max(max(rect_y) - y, y - min(rect_y))
+            # cv2.circle(matched_image, (int(x), int(y)), int(min(max(max(rect_x) - x, x - min(rect_x)), max(max(rect_y) - y, y - min(rect_y))) * 1.2), (200, 0,0), 3)
+            # x1, x2 = min(rect_x) - sum(rect_x) / len(rect_x) * 0.05, max(rect_x) + sum(rect_x) / len(rect_x) * 0.05
+            # y1, y2 = min(rect_y) - sum(rect_y) / len(rect_y) * 0.05, max(rect_y) + sum(rect_y) / len(rect_y) * 0.05
+            cv2.rectangle(result, (int(x1*0.95), int(y1*0.95)), (int(x2*1.05), int(y2*1.05)), (200, 0, 0), 2)
+
         return result
+
+    def group_points(self, points_x, points_y, k_group):
+        matrix = [[[points_x[0]], [points_y[0]]]]
+        for x, y in zip(points_x[1:], points_y[1:]):
+            for i in range(len(matrix)):
+                mean_point_x = sum(matrix[i][0]) / len(matrix[i][0])
+                mean_point_y = sum(matrix[i][1]) / len(matrix[i][1])
+                if abs(mean_point_x - x) < mean_point_x * k_group and abs(
+                        mean_point_y - y) < mean_point_y * k_group:
+                    matrix[i][0].append(x)
+                    matrix[i][1].append(y)
+                    break
+            else:
+                matrix.append([[x], [y]])
+        return matrix
