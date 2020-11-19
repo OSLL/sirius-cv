@@ -1,5 +1,6 @@
 from base_image_analyze import BaseImageAnalyze
 import cv2
+import numpy as np
 
 
 class ImageAnalyze(BaseImageAnalyze):
@@ -14,7 +15,7 @@ class ImageAnalyze(BaseImageAnalyze):
 
     def match_images(self, detected_objects,
                      method=cv2.NORM_HAMMING, crossCheck=True, depth=10,
-                     flags=2, k_group=0.2):
+                     flags=2, k_group=0.2, k_error=0.1):
         detected_object_1, detected_object_2 = detected_objects
         bf = cv2.BFMatcher(method, crossCheck=crossCheck)
         matches = bf.match(detected_object_1[1], detected_object_2[1])
@@ -37,6 +38,7 @@ class ImageAnalyze(BaseImageAnalyze):
         points_x = list(map(lambda z: z[0], list_kp2))
         points_y = list(map(lambda z: z[1], list_kp2))
         list_objects = self.group_points(points_x, points_y, k_group)
+        list_objects = self.drop_errors(list_objects, k_error=k_error)
         for rect in list_objects:
             rect_x = rect[0]
             rect_y = rect[1]
@@ -49,8 +51,8 @@ class ImageAnalyze(BaseImageAnalyze):
             # cv2.circle(matched_image, (int(x), int(y)), int(min(max(max(rect_x) - x, x - min(rect_x)), max(max(rect_y) - y, y - min(rect_y))) * 1.2), (200, 0,0), 3)
             # x1, x2 = min(rect_x) - sum(rect_x) / len(rect_x) * 0.05, max(rect_x) + sum(rect_x) / len(rect_x) * 0.05
             # y1, y2 = min(rect_y) - sum(rect_y) / len(rect_y) * 0.05, max(rect_y) + sum(rect_y) / len(rect_y) * 0.05
-            cv2.rectangle(result, (int(x1*0.95), int(y1*0.95)), (int(x2*1.05), int(y2*1.05)), (200, 0, 0), 2)
-
+            cv2.rectangle(result, (int(x1 * 0.95), int(y1 * 0.95)),
+                          (int(x2 * 1.05), int(y2 * 1.05)), (200, 0, 0), 2)
         return result
 
     def group_points(self, points_x, points_y, k_group):
@@ -67,3 +69,25 @@ class ImageAnalyze(BaseImageAnalyze):
             else:
                 matrix.append([[x], [y]])
         return matrix
+
+    def drop_errors(self, rect_matrix, k_error):
+        for k, rect in enumerate(rect_matrix):
+            restart = True
+            rect_x, rect_y = rect
+            while restart:
+                restart = False
+                for i, (x, y) in enumerate(zip(rect_x, rect_y)):
+                    if abs(1 - x / np.mean(
+                            rect_x[:i] + rect_x[i + 1:])) > k_error:
+                        restart = True
+                        del rect_x[i]
+                        del rect_y[i]
+                        break
+                    if abs(1 - y / np.mean(
+                            rect_y[:i] + rect_y[i + 1:])) > k_error:
+                        restart = True
+                        del rect_x[i]
+                        del rect_y[i]
+                        break
+            rect_matrix[k] = [rect_x, rect_y]
+        return rect_matrix
