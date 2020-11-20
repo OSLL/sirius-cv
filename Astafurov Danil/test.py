@@ -26,7 +26,7 @@ images = ImageAnalyze(img1, img2)
 points = images.get_points()
 detected_object_1, detected_object_2 = points
 # kp1, kp2 = detected_object_1[0], detected_object_2[0]
-matched_image = images.match_images(points, depth=30, k_group=0.3)
+matched_image = images.match_images(points, depth=30, k_group=0.31, k_error=0.2)
 # list_kp1 = []
 # list_kp2 = []
 # rows1 = img1.shape[0]
