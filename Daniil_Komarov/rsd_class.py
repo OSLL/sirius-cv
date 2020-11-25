@@ -34,7 +34,7 @@ class RoadSignDetector(RoadSignDetectorPattern):
 		y_gen = [query_kps[i.trainIdx].pt[1] for i in good_points]
 		coords = []
 		for i, x_coord in enumerate(x_gen):
-			cv2.circle(self.query_img, (int(x_coord), int(y_gen[i])), 5, (255, 255, 255), 2)
+			cv2.circle(self.query_img, (int(x_coord), int(y_gen[i])), 15, (255, 0, 0), 2)
 		
 	def calculateSignCenters(self, query_kps, good_points):
 		if(len(good_points) > min_kps):
@@ -98,7 +98,7 @@ class RoadSignDetector(RoadSignDetectorPattern):
 
 	def createVideo(self, images):
 		height, width, layers = images[0].shape
-		video = cv2.VideoWriter("output.avi", 0, 5, (width, height))
+		video = cv2.VideoWriter("output.mp4", 0, 5, (width, height))
 		for frame in images:
 			video.write(frame)
 		video.release()
