@@ -1,11 +1,15 @@
+import random
+from copy import deepcopy
 from base_image_analyze import BaseImageAnalyze
 import cv2
 import numpy as np
 
 
 class ImageAnalyze(BaseImageAnalyze):
-    def __init__(self, image_1, image_2):
+
+    def __init__(self, signs, image_1=None, image_2=None):
         super().__init__(image_1, image_2)
+        self.signs = signs
 
     def get_points(self):
         orb = cv2.ORB_create()
@@ -15,15 +19,18 @@ class ImageAnalyze(BaseImageAnalyze):
 
     def match_images(self, detected_objects,
                      method=cv2.NORM_HAMMING, crossCheck=True, depth=10,
-                     flags=2, k_group=0.2, k_error=0.1):
+                     flags=2, k_group=0.2, k_error=0.1, is_match=True):
         detected_object_1, detected_object_2 = detected_objects
         bf = cv2.BFMatcher(method, crossCheck=crossCheck)
         matches = bf.match(detected_object_1[1], detected_object_2[1])
         matches = sorted(matches, key=lambda x: x.distance)
-        result = cv2.drawMatches(self.image_1, detected_object_1[0],
-                                 self.image_2, detected_object_2[0],
-                                 matches[:depth], flags=flags,
-                                 outImg=None)
+        if is_match:
+            result = cv2.drawMatches(self.image_1, detected_object_1[0],
+                                     self.image_2, detected_object_2[0],
+                                     matches[:depth], flags=flags,
+                                     outImg=None)
+        else:
+            result = self.image_2
         list_kp1 = []
         list_kp2 = []
         rows1 = self.image_1.shape[0]
@@ -34,11 +41,16 @@ class ImageAnalyze(BaseImageAnalyze):
         for mat in matches[:depth]:
             img2_idx = mat.trainIdx
             (x2, y2) = detected_object_2[0][img2_idx].pt
-            list_kp2.append((x2 + cols1, y2))
+            list_kp2.append((x2 + (cols1 if is_match else 0), y2))
+            cv2.circle(result, (int(x2 + (cols1 if is_match else 0)), int(y2)),
+                       5, (255, 0, 0), 3)
         points_x = list(map(lambda z: z[0], list_kp2))
         points_y = list(map(lambda z: z[1], list_kp2))
         list_objects = self.group_points(points_x, points_y, k_group)
         list_objects = self.drop_errors(list_objects, k_error=k_error)
+        color = (
+            random.randint(0, 255), random.randint(0, 255),
+            random.randint(0, 255))
         for rect in list_objects:
             rect_x = rect[0]
             rect_y = rect[1]
@@ -52,7 +64,7 @@ class ImageAnalyze(BaseImageAnalyze):
             # x1, x2 = min(rect_x) - sum(rect_x) / len(rect_x) * 0.05, max(rect_x) + sum(rect_x) / len(rect_x) * 0.05
             # y1, y2 = min(rect_y) - sum(rect_y) / len(rect_y) * 0.05, max(rect_y) + sum(rect_y) / len(rect_y) * 0.05
             cv2.rectangle(result, (int(x1 * 0.95), int(y1 * 0.95)),
-                          (int(x2 * 1.05), int(y2 * 1.05)), (200, 0, 0), 2)
+                          (int(x2 * 1.05), int(y2 * 1.05)), color, thickness=2)
         return result
 
     def group_points(self, points_x, points_y, k_group):
@@ -91,3 +103,92 @@ class ImageAnalyze(BaseImageAnalyze):
                         break
             rect_matrix[k] = [rect_x, rect_y]
         return rect_matrix
+
+    def update_img(self, sign_name, sign, img, result):
+        # queryImage
+
+        MIN_MATCH_COUNT = 10
+
+        sift = cv2.SIFT_create()
+        # find the keypoints and descriptors with SIFT
+        kp1, des1 = sift.detectAndCompute(sign, None)
+        kp2, des2 = sift.detectAndCompute(img, None)
+
+        FLANN_INDEX_KDTREE = 1
+        index_params = dict(algorithm=FLANN_INDEX_KDTREE, trees=5)
+        search_params = dict(checks=50)
+        flann = cv2.FlannBasedMatcher(index_params, search_params)
+        matches = flann.knnMatch(des1, des2, k=2)
+        print(len(matches), len(matches[0]))
+        # store all the good matches as per Lowe's ratio test.
+        good = []
+        for m, n in matches:
+            if m.distance < 0.7 * n.distance:
+                good.append(m)
+
+        if len(good) > MIN_MATCH_COUNT:
+            src_pts = np.float32(
+                [kp1[m.queryIdx].pt for m in good]).reshape(-1,
+                                                            1,
+                                                            2)
+            dst_pts = np.float32(
+                [kp2[m.trainIdx].pt for m in good]).reshape(-1,
+                                                            1,
+                                                            2)
+            M, mask = cv2.findHomography(src_pts, dst_pts, cv2.RANSAC, 5.0)
+            matchesMask = mask.ravel().tolist()
+            h, w, d = sign.shape
+            pts = np.float32(
+                [[0, 0], [0, h - 1], [w - 1, h - 1], [w - 1, 0]]).reshape(
+                -1, 1, 2)
+            dst = cv2.perspectiveTransform(pts, M)
+            # img2 = cv2.polylines(img, [np.int32(dst)], True, 255, 3,
+            #                      cv2.LINE_AA)
+            lines = list(map(lambda e: e[0], np.int32(dst)))
+            lines = sorted(sorted(lines, key=lambda e: e[1])[:2],
+                           key=lambda e: e[0])
+            lines = [[lines[0][0], lines[0][1] - 40],
+                     [lines[1][0], lines[0][1] - 40],
+                     [lines[1][0], lines[1][1]], [lines[0][0], lines[0][1]]]
+            result = cv2.fillPoly(result, [np.int32(lines)], 255)
+            print(lines[-1])
+            result = cv2.putText(result, sign_name,
+                                 (lines[-1][0], lines[-1][1] - 20),
+                                 cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255),
+                                 2, cv2.LINE_AA)
+            draw_params = dict(matchColor=(0, 255, 0),
+                               # draw matches in green color
+                               singlePointColor=None,
+                               matchesMask=matchesMask,  # draw only inliers
+                               flags=2)
+            # img3 = cv2.drawMatches(sign, kp1, img2, kp2, good, None,
+            #                        **draw_params)
+            print(matchesMask)
+            return cv2.fillPoly(img, [np.int32(dst)], 255), cv2.polylines(
+                result, [np.int32(dst)], True, 255, 3,
+                cv2.LINE_AA)
+            # return cv2.drawMatches(sign, kp1, img, kp2, good, None,
+            #                        **draw_params)[:, sign.shape[0]:]
+        else:
+            return None, result
+            # plt.imshow(img3, 'gray'), plt.show()
+            # cv.imshow('image', img3)
+            # cv2.waitKey(0)
+
+    def new_analyze(self, img):
+        img1 = cv2.imread(img)
+        result = deepcopy(img1)
+        first = True
+        second = True
+        for sign in self.signs:
+            sign_name = sign
+            sign = cv2.imread(self.signs[sign])
+            while not img1 is None:
+                img2 = deepcopy(img1)
+                img1, result = self.update_img(sign_name, sign, img2, result)
+            sign = cv2.flip(sign, 1)
+            img1 = deepcopy(img2)
+            while not img1 is None:
+                img2 = deepcopy(img1)
+                img1, result = self.update_img(sign_name, sign, img2, result)
+        return result

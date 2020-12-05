@@ -1,7 +1,11 @@
+import _sqlite3
 from image_analyze import ImageAnalyze
 import cv2
+from test_video import from_video_to_frames
 from matplotlib import pyplot as plt
 import numpy as np
+import os
+from make_video import make_video
 
 
 def f(points_x, points_y):
@@ -20,38 +24,50 @@ def f(points_x, points_y):
     return matrix
 
 
-img1 = cv2.imread('stop_2.png', 0)  # queryImage
-img2 = cv2.imread('road_2.jpg', 0)  # trainImage
-images = ImageAnalyze(img1, img2)
-points = images.get_points()
-detected_object_1, detected_object_2 = points
-# kp1, kp2 = detected_object_1[0], detected_object_2[0]
-matched_image = images.match_images(points, depth=30, k_group=0.31, k_error=0.2)
-# list_kp1 = []
-# list_kp2 = []
-# rows1 = img1.shape[0]
-# cols1 = img1.shape[1]
-# rows2 = img2.shape[0]
-# cols2 = img2.shape[1]
-#
-#
-# for mat in matches[:30]:
-#     img2_idx = mat.trainIdx
-#     (x2, y2) = kp2[img2_idx].pt
-#     list_kp2.append((x2 + cols1, y2))
-# points_x = list(map(lambda z: z[0], list_kp2))
-# points_y = list(map(lambda z: z[1], list_kp2))
-# list_objects = f(points_x, points_y)
-# print(max(list_objects[1][0]))
-# for rect in list_objects:
-#     rect_x = rect[0]
-#     rect_y = rect[1]
-#     x = sum(rect_x) / len(rect_x)
-#     y = sum(rect_y) / len(rect_y)
-    #cv2.circle(matched_image, (int(x), int(y)), int(min(max(max(rect_x) - x, x - min(rect_x)), max(max(rect_y) - y, y - min(rect_y))) * 1.2), (200, 0,0), 3)
-    #x1, x2 = min(rect_x) - sum(rect_x) / len(rect_x) * 0.05, max(rect_x) + sum(rect_x) / len(rect_x) * 0.05
-    #y1, y2 = min(rect_y) - sum(rect_y) / len(rect_y) * 0.05, max(rect_y) + sum(rect_y) / len(rect_y) * 0.05
-    #cv2.rectangle(matched_image, (int(x -max(max(rect_x) - x, x - min(rect_x))), int(y - max(max(rect_y) - y, y - min(rect_y)))), (int(x + max(max(rect_x) - x, x - min(rect_x))), int(y + max(max(rect_y) - y, y - min(rect_y)))), (200, 0, 0), 2)
-resized = cv2.resize(matched_image, None, fx=0.3, fy=0.5)
-cv2.imshow('image', resized)
-cv2.waitKey(0)
+def demonstration_video():
+    imgs = [('test_photos/40.jpg', 'test_photos/40_test_2.jpg'),
+            ('test_photos/ped.jpg', 'test_photos/ped_test.jpg'),
+            ('test_photos/road_work.jpg', 'test_photos/road_work_test.jpg')]
+    for img, test_img in imgs:
+        img1 = cv2.imread(img)  # queryImage
+        img2 = cv2.imread(test_img)  # trainImage
+        images = ImageAnalyze(img1, img2)
+        points = images.get_points()
+        print(points)
+        detected_object_1, detected_object_2 = points
+        # kp1, kp2 = detected_object_1[0], detected_object_2[0]
+        matched_image = images.match_images(points, depth=20, k_group=0.3,
+                                            k_error=0.3, is_match=False)
+        # resized = cv2.resize(matched_image, None, fx=0.3, fy=0.5)
+        cv2.imshow('image', matched_image)
+        cv2.waitKey(0)
+
+def find_signs():
+    signs = os.listdir('signs')
+    imgs = from_video_to_frames('output.mov')
+    ready_imgs = []
+    for img in imgs:
+        for sign_name in signs:
+            sign = cv2.imread('signs/' + sign_name)  # queryImage
+            images = ImageAnalyze(cv2.Canny(sign, 300, 300), cv2.Canny(img, 300, 300))
+            points = images.get_points()
+            detected_object_1, detected_object_2 = points
+            # kp1, kp2 = detected_object_1[0], detected_object_2[0]
+            if points[0][0]:
+                img = images.match_images(points, depth=20, k_group=0.1,
+                                          k_error=0.3, is_match=False)
+                # resized = cv2.resize(matched_image, None, fx=0.3, fy=0.5)
+                # cv2.imshow('image', img)
+                # cv2.waitKey(0)
+                print(sign_name)
+        ready_imgs.append(img)
+    make_video(ready_imgs, 'ready_4.mov', img.shape[1], img.shape[0], fps=1)
+
+def test_2():
+    signs = {'ped-cross': 'test_photos/1024px-5.png'}
+    images = ImageAnalyze(signs)
+    result = images.new_analyze('test_photos/test_ped_4.png')
+    cv2.imshow('image', result)
+    cv2.waitKey(0)
+
+test_2()
