@@ -6,8 +6,9 @@ from matplotlib import pyplot as plt
 import numpy as np
 import os
 from make_video import make_video
+import argparse
 
-
+SIGNS = {'ped-cross': 'test_photos/1024px-5.png'}
 def f(points_x, points_y):
     matrix = [[[points_x[0]], [points_y[0]]]]
     for x, y in zip(points_x[1:], points_y[1:]):
@@ -70,4 +71,25 @@ def test_2():
     cv2.imshow('image', result)
     cv2.waitKey(0)
 
-test_2()
+def parse_video_name():
+    parser = argparse.ArgumentParser(description='Videos to images')
+    parser.add_argument('--input', type=str, help='Input dir for videos')
+    parser.add_argument('--output', type=str, help='Output dir for image')
+    args = parser.parse_args()
+    return args.input, args.output
+
+
+def detect_signs():
+    in_video, out_video = parse_video_name()
+    imgs = from_video_to_frames(in_video)
+    ready_imgs = []
+    for img in imgs:
+        for sign_name in SIGNS:
+            sign = cv2.imread(SIGNS[sign_name])  # queryImage
+            images = ImageAnalyze(sign, img)
+            img = images.update_img(sign_name)
+        ready_imgs.append(img)
+    make_video(ready_imgs, out_video, img.shape[1], img.shape[0], fps=20)
+
+if __name__ == '__main__':
+    detect_signs()

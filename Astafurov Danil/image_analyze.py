@@ -7,9 +7,8 @@ import numpy as np
 
 class ImageAnalyze(BaseImageAnalyze):
 
-    def __init__(self, signs, image_1=None, image_2=None):
+    def __init__(self, image_1=None, image_2=None):
         super().__init__(image_1, image_2)
-        self.signs = signs
 
     def get_points(self):
         orb = cv2.ORB_create()
@@ -104,76 +103,12 @@ class ImageAnalyze(BaseImageAnalyze):
             rect_matrix[k] = [rect_x, rect_y]
         return rect_matrix
 
-    def update_img(self, sign_name, sign, img, result):
-        # queryImage
-
-        MIN_MATCH_COUNT = 10
-
-        sift = cv2.SIFT_create()
-        # find the keypoints and descriptors with SIFT
-        kp1, des1 = sift.detectAndCompute(sign, None)
-        kp2, des2 = sift.detectAndCompute(img, None)
-
-        FLANN_INDEX_KDTREE = 1
-        index_params = dict(algorithm=FLANN_INDEX_KDTREE, trees=5)
-        search_params = dict(checks=50)
-        flann = cv2.FlannBasedMatcher(index_params, search_params)
-        matches = flann.knnMatch(des1, des2, k=2)
-        print(len(matches), len(matches[0]))
-        # store all the good matches as per Lowe's ratio test.
-        good = []
-        for m, n in matches:
-            if m.distance < 0.7 * n.distance:
-                good.append(m)
-
-        if len(good) > MIN_MATCH_COUNT:
-            src_pts = np.float32(
-                [kp1[m.queryIdx].pt for m in good]).reshape(-1,
-                                                            1,
-                                                            2)
-            dst_pts = np.float32(
-                [kp2[m.trainIdx].pt for m in good]).reshape(-1,
-                                                            1,
-                                                            2)
-            M, mask = cv2.findHomography(src_pts, dst_pts, cv2.RANSAC, 5.0)
-            matchesMask = mask.ravel().tolist()
-            h, w, d = sign.shape
-            pts = np.float32(
-                [[0, 0], [0, h - 1], [w - 1, h - 1], [w - 1, 0]]).reshape(
-                -1, 1, 2)
-            dst = cv2.perspectiveTransform(pts, M)
-            # img2 = cv2.polylines(img, [np.int32(dst)], True, 255, 3,
-            #                      cv2.LINE_AA)
-            lines = list(map(lambda e: e[0], np.int32(dst)))
-            lines = sorted(sorted(lines, key=lambda e: e[1])[:2],
-                           key=lambda e: e[0])
-            lines = [[lines[0][0], lines[0][1] - 40],
-                     [lines[1][0], lines[0][1] - 40],
-                     [lines[1][0], lines[1][1]], [lines[0][0], lines[0][1]]]
-            result = cv2.fillPoly(result, [np.int32(lines)], 255)
-            print(lines[-1])
-            result = cv2.putText(result, sign_name,
-                                 (lines[-1][0], lines[-1][1] - 20),
-                                 cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255),
-                                 2, cv2.LINE_AA)
-            draw_params = dict(matchColor=(0, 255, 0),
-                               # draw matches in green color
-                               singlePointColor=None,
-                               matchesMask=matchesMask,  # draw only inliers
-                               flags=2)
-            # img3 = cv2.drawMatches(sign, kp1, img2, kp2, good, None,
-            #                        **draw_params)
-            print(matchesMask)
-            return cv2.fillPoly(img, [np.int32(dst)], 255), cv2.polylines(
-                result, [np.int32(dst)], True, 255, 3,
-                cv2.LINE_AA)
-            # return cv2.drawMatches(sign, kp1, img, kp2, good, None,
-            #                        **draw_params)[:, sign.shape[0]:]
-        else:
-            return None, result
-            # plt.imshow(img3, 'gray'), plt.show()
-            # cv.imshow('image', img3)
-            # cv2.waitKey(0)
+    def update_img(self, sign_name):
+        draw_image = deepcopy(self.image_2)
+        result_image = deepcopy(self.image_2)
+        while not draw_image is None:
+            draw_image, result_image = self.homography_analyze(sign_name, draw_image, result_image)
+        return result_image
 
     def new_analyze(self, img):
         img1 = cv2.imread(img)
@@ -192,3 +127,55 @@ class ImageAnalyze(BaseImageAnalyze):
                 img2 = deepcopy(img1)
                 img1, result = self.update_img(sign_name, sign, img2, result)
         return result
+
+    def homography_analyze(self, sign_name, draw_image, result_image):
+        MIN_MATCH_COUNT = 10
+
+        sift = cv2.SIFT_create()
+        # find the keypoints and descriptors with SIFT
+        kp1, des1 = sift.detectAndCompute(self.image_1, None)
+        kp2, des2 = sift.detectAndCompute(draw_image, None)
+
+        FLANN_INDEX_KDTREE = 1
+        index_params = dict(algorithm=FLANN_INDEX_KDTREE, trees=5)
+        search_params = dict(checks=50)
+        flann = cv2.FlannBasedMatcher(index_params, search_params)
+        matches = flann.knnMatch(des1, des2, k=2)
+        # store all the good matches as per Lowe's ratio test.
+        good = []
+        for m, n in matches:
+            if m.distance < 0.7 * n.distance:
+                good.append(m)
+
+        if len(good) > MIN_MATCH_COUNT:
+            src_pts = np.float32(
+                [kp1[m.queryIdx].pt for m in good]).reshape(-1,
+                                                            1,
+                                                            2)
+            dst_pts = np.float32(
+                [kp2[m.trainIdx].pt for m in good]).reshape(-1,
+                                                            1,
+                                                            2)
+            M, mask = cv2.findHomography(src_pts, dst_pts, cv2.RANSAC, 5.0)
+            matchesMask = mask.ravel().tolist()
+            h, w, d = self.image_1.shape
+            pts = np.float32(
+                [[0, 0], [0, h - 1], [w - 1, h - 1], [w - 1, 0]]).reshape(
+                -1, 1, 2)
+            dst = cv2.perspectiveTransform(pts, M)
+            lines = list(map(lambda e: e[0], np.int32(dst)))
+            lines = sorted(sorted(lines, key=lambda e: e[1])[:2],
+                           key=lambda e: e[0])
+            lines = [[lines[0][0], lines[0][1] - 40],
+                     [lines[1][0], lines[0][1] - 40],
+                     [lines[1][0], lines[1][1]], [lines[0][0], lines[0][1]]]
+            result_image = cv2.fillPoly(result_image, [np.int32(lines)], 255)
+            result_image = cv2.putText(result_image, sign_name,
+                                 (lines[-1][0], lines[-1][1] - 20),
+                                 cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255),
+                                 2, cv2.LINE_AA)
+
+            return (cv2.fillPoly(draw_image, [np.int32(dst)], 255),
+                    cv2.polylines(result_image, [np.int32(dst)], True, 255, 3, cv2.LINE_AA))
+        else:
+            return None, result_image
