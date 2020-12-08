@@ -5,6 +5,8 @@ img1 = None
 img1 = cv2.imread('stop.png')
 img2 = cv2.imread('./image_q.png')
 
+img1 = cv2.Canny(img1, 100, 200)
+
 img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
 
 win_name = 'Camera Matching'
@@ -24,7 +26,7 @@ while cap.isOpened():
     if img1 is None: 
         res = frame
     else:             
-        img2 = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        img2 = cv2.Canny(cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY), 100, 200)
 
         gray1 = img1#cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
         gray2 = img2#cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
