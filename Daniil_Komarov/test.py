@@ -1,16 +1,18 @@
 import cv2, numpy as np
+import time
 
 img1 = None
 #img1 = cv2.imread('./image.jpg')#, cv2.COLOR_BGR2GRAY)
-img1 = cv2.imread('stop.png')
-img2 = cv2.imread('./image_q.png')
+img1 = cv2.imread('vlcsnap2.png')
 
-img1 = cv2.Canny(img1, 100, 200)
 
 img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
+#img1 = cv2.resize(img1, (64, 64))
+#img1 = cv2.blur(img1, (5, 5))
+#img1 = cv2.Canny(img1, 100, 200)
 
 win_name = 'Camera Matching'
-MIN_MATCH = 10
+MIN_MATCH = 3
 detector = cv2.SIFT_create(500)
 FLANN_INDEX_LSH = 6
 index_params= dict(algorithm = 1,
@@ -21,16 +23,19 @@ cap = cv2.VideoCapture("dt.mp4")
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 
+kp1, desc1 = detector.detectAndCompute(img1, None)
+
 while cap.isOpened():       
     ret, frame = cap.read() 
     if img1 is None: 
         res = frame
     else:             
-        img2 = cv2.Canny(cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY), 100, 200)
-
-        gray1 = img1#cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
+        img2 = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        #img2 = cv2.Canny(img2, 100, 200)
+        #img2 = cv2.imread('vlcsnap4.png')
+        #img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
         gray2 = img2#cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
-        kp1, desc1 = detector.detectAndCompute(gray1, None)
+        
         kp2, desc2 = detector.detectAndCompute(gray2, None)
         matches = matcher.knnMatch(desc1, desc2, 2)
         ratio = 0.75
@@ -53,15 +58,16 @@ while cap.isOpened():
         else: print()
         res = cv2.drawMatches(img1, kp1, img2, kp2, good_matches, None, \
                             matchesMask=matchesMask,
-                            flags=cv2.DRAW_MATCHES_FLAGS_NOT_DRAW_SINGLE_POINTS)
+                            flags=cv2.DRAW_MATCHES_FLAGS_NOT_DRAW_SINGLE_POINTS
+                            )
     cv2.imshow(win_name, res)
     key = cv2.waitKey(1)
     if key == 27:   
             break          
     elif key == ord(' '): 
-        x,y,w,h = cv2.selectROI(win_name, frame, False)
-        if w and h:
-            img1 = frame[y:y+h, x:x+w]
+        time.sleep(1)
+        key = cv2.waitKey(1)
+        while(key != ord(' ')): key = cv2.waitKey(1)
 else:
     print("can't open camera.")
 cap.release()                          
