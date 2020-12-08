@@ -2,7 +2,7 @@ import cv2, numpy as np
 
 img1 = None
 #img1 = cv2.imread('./image.jpg')#, cv2.COLOR_BGR2GRAY)
-img1 = cv2.imread('stop.png')
+img1 = cv2.imread('no-left-turn.png')
 img2 = cv2.imread('./image_q.png')
 win_name = 'Camera Matching'
 MIN_MATCH = 10
