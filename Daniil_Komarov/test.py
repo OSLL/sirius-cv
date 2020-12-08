@@ -2,7 +2,7 @@ import cv2, numpy as np
 
 img1 = None
 #img1 = cv2.imread('./image.jpg')#, cv2.COLOR_BGR2GRAY)
-img1 = cv2.imread('no-left-turn.png')
+img1 = cv2.imread('right_t.png')
 img2 = cv2.imread('./image_q.png')
 win_name = 'Camera Matching'
 MIN_MATCH = 10
@@ -31,7 +31,7 @@ while cap.isOpened():
         ratio = 0.75
         good_matches = [m[0] for m in matches \
                             if len(m) == 2 and m[0].distance < m[1].distance * ratio]
-        print('good matches:%d/%d' %(len(good_matches),len(matches)))
+        print('good matches:%d/%d' %(len(good_matches),len(matches)), end=" ")
         matchesMask = np.zeros(len(good_matches)).tolist()
         if len(good_matches) > MIN_MATCH: 
             src_pts = np.float32([ kp1[m.queryIdx].pt for m in good_matches ])
@@ -45,6 +45,7 @@ while cap.isOpened():
                 pts = np.float32([ [[0,0]],[[0,h-1]],[[w-1,h-1]],[[w-1,0]] ])
                 dst = cv2.perspectiveTransform(pts,mtrx)
                 img2 = cv2.polylines(img2,[np.int32(dst)],True,255,3, cv2.LINE_AA)
+        else: print()
         res = cv2.drawMatches(img1, kp1, img2, kp2, good_matches, None, \
                             matchesMask=matchesMask,
                             flags=cv2.DRAW_MATCHES_FLAGS_NOT_DRAW_SINGLE_POINTS)
