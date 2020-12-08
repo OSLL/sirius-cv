@@ -2,13 +2,16 @@ import cv2, numpy as np
 
 img1 = None
 #img1 = cv2.imread('./image.jpg')#, cv2.COLOR_BGR2GRAY)
-img1 = cv2.imread('right_t.png')
+img1 = cv2.imread('stop.png')
 img2 = cv2.imread('./image_q.png')
+
+img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
+
 win_name = 'Camera Matching'
 MIN_MATCH = 10
 detector = cv2.SIFT_create(500)
 FLANN_INDEX_LSH = 6
-index_params= dict(algorithm = 0,
+index_params= dict(algorithm = 1,
                    trees = 5)
 search_params=dict(checks=50)
 matcher = cv2.FlannBasedMatcher(index_params, search_params)
@@ -21,7 +24,7 @@ while cap.isOpened():
     if img1 is None: 
         res = frame
     else:             
-        img2 = frame
+        img2 = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
         gray1 = img1#cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
         gray2 = img2#cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
