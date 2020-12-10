@@ -91,10 +91,7 @@ class RoadSignDetector(RoadSignDetectorPattern):
 					add_size_y = int(y_size/100*40)
 					cv2.putText(self.query_img, sign[1], (center[0]-add_size_x, center[2]-add_size_y-10), cv2.FONT_ITALIC, 0.4, (255,255,255), 1, cv2.LINE_AA)
 					self.query_img = cv2.rectangle(self.query_img, (center[0]-add_size_x, center[2]-add_size_y), (center[1]+add_size_x, center[3]+add_size_y), (255, 255, 255), 2)
-				return self.query_img
-			else:
-				print("Image doesn't contain road signs!")
-				return self.query_img
+		return self.query_img
 		
 	def changeQueryImage(self, query_img):
 		self.query_img = query_img
