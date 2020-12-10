@@ -3,23 +3,21 @@ import time
 
 img1 = None
 #img1 = cv2.imread('./image.jpg')#, cv2.COLOR_BGR2GRAY)
-img1 = cv2.imread('vlcsnap2.png')
-
+img1 = cv2.imread('b.png')
 
 img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
-#img1 = cv2.resize(img1, (64, 64))
+img1 = cv2.resize(img1, (64, 64))
 #img1 = cv2.blur(img1, (5, 5))
 #img1 = cv2.Canny(img1, 100, 200)
 
 win_name = 'Camera Matching'
 MIN_MATCH = 3
-detector = cv2.SIFT_create(500)
-FLANN_INDEX_LSH = 6
+detector = cv2.SIFT_create()
 index_params= dict(algorithm = 1,
                    trees = 5)
 search_params=dict(checks=50)
 matcher = cv2.FlannBasedMatcher(index_params, search_params)
-cap = cv2.VideoCapture("dt.mp4")              
+cap = cv2.VideoCapture("dt2.mp4")              
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 

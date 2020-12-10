@@ -1,7 +1,7 @@
 class RoadSignDetectorPattern:
-  def __init__(self, test_img, query_img):
-    self.test_img = test_img
-    self.query_img = query_img
+  def __init__(self):
+    self.test_img = []
+    self.query_img = None
 
   def detect(self):
     pass
@@ -19,6 +19,9 @@ class RoadSignDetectorPattern:
     pass
 
   def changeQueryImage(self, query_img):
+    pass
+
+  def addTrainImage(self, train_img, name):
     pass
 
   def createVideo(self, images):

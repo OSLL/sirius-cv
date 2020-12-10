@@ -2,23 +2,40 @@ from rsd_class import RoadSignDetector
 import cv2
 import os
 
-img_test = cv2.imread('arrow.png')
-img_test = cv2.Canny(img_test, 100, 200)
-cv2.imshow("train", img_test)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
-rsd = RoadSignDetector(img_test, None)
+img_test_stop = cv2.imread('a.png')
+img_test_stop = cv2.cvtColor(img_test_stop, cv2.COLOR_BGR2GRAY)
 
-input_frames_names = os.listdir("test_set/")
+img_test_triangle = cv2.imread('b.png')
+img_test_triangle = cv2.cvtColor(img_test_triangle, cv2.COLOR_BGR2GRAY)
+
+rsd = RoadSignDetector()
+rsd.addTrainImage(img_test_stop, "STOP")
+rsd.addTrainImage(img_test_triangle, "TRIANGLE")
+
+cap = cv2.VideoCapture("dt2.mp4")              
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 
 input_frames = []
-for i, file in enumerate(input_frames_names[:10]):
-	print("Frame", i, "from", len(input_frames_names))
-	img_raw = cv2.imread("test_set/"+file)
-	img = cv2.Canny(img_raw, 100, 200)
-	rsd.changeQueryImage(img)
-	out = rsd.run()
-	out = (out[:,:,None].astype(img.dtype))
-	input_frames.append(out)
 
-rsd.createVideo(input_frames)
+i = 0
+while cap.isOpened():
+    ret, frame = cap.read()
+    try:
+        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        #print("Frame", i, "from", len(input_frames_names))
+        #img_raw = cv2.imread("test_set/"+file)
+        #img = cv2.Canny(img_raw, 100, 200)
+        #cv2.imshow("raw", frame)
+        rsd.changeQueryImage(frame)
+        out = rsd.run()
+        #cv2.imshow("output", out)
+        out = (out[:,:,None].astype(frame.dtype))
+        input_frames.append(out)
+        #cv2.waitKey(0)
+        print("Working on", i)
+        i += 1
+    except cv2.error:
+        break
+
+rsd.createVideo(input_frames, 15)
