@@ -2,15 +2,15 @@ from rsd_class import RoadSignDetector
 import cv2
 import os
 
-img_test_stop = cv2.imread('a.png')
+img_test_stop = cv2.imread('stop.png')
 img_test_stop = cv2.cvtColor(img_test_stop, cv2.COLOR_BGR2GRAY)
 
-img_test_triangle = cv2.imread('b.png')
+img_test_triangle = cv2.imread('t-intersection.png')
 img_test_triangle = cv2.cvtColor(img_test_triangle, cv2.COLOR_BGR2GRAY)
 
 rsd = RoadSignDetector()
 rsd.addTrainImage(img_test_stop, "STOP")
-rsd.addTrainImage(img_test_triangle, "TRIANGLE")
+rsd.addTrainImage(img_test_triangle, "T-INTERSECTION")
 
 cap = cv2.VideoCapture("dt2.mp4")              
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
