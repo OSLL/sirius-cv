@@ -6,8 +6,8 @@ from sklearn.cluster import OPTICS
 min_kps = 4
 
 class RoadSignDetector(RoadSignDetectorPattern):
-	def __init__(self):
-			super().__init__()
+	def __init__(self, draw_kps):
+			super().__init__(draw_kps)
 
 	def detect(self, train_img):
 		sift = cv2.SIFT_create()
@@ -22,19 +22,17 @@ class RoadSignDetector(RoadSignDetectorPattern):
 		for m in matches:
 				if m[0].distance < 0.9*m[1].distance:
 						good_points.append(m[0])
-		print(len(good_points))
 		if(len(good_points) > min_kps):
 			return good_points
 		else:
 			return None
 
 	def drawKps(self, query_kps, good_points):
-		print("Showing kps")
 		x_gen = [query_kps[i.trainIdx].pt[0] for i in good_points]
 		y_gen = [query_kps[i.trainIdx].pt[1] for i in good_points]
 		coords = []
 		for i, x_coord in enumerate(x_gen):
-			cv2.circle(self.query_img, (int(x_coord), int(y_gen[i])), 15, (255, 0, 0), 2)
+			cv2.circle(self.query_img, (int(x_coord), int(y_gen[i])), 7, (255, 0, 0), 2)
 		
 	def calculateSignCenters(self, query_kps, good_points):
 		if(len(good_points) > min_kps):
@@ -43,7 +41,8 @@ class RoadSignDetector(RoadSignDetectorPattern):
 			coords = []
 			for i, x_coord in enumerate(x_gen):
 				coords.append([x_coord, y_gen[i]])
-			#self.drawKps(query_kps, good_points)
+			if(self.draw_kps):
+				self.drawKps(query_kps, good_points)
 
 			points_to_clusterize = np.array(coords)
 			clust = OPTICS(min_samples=min_kps, max_eps=50)
@@ -99,12 +98,9 @@ class RoadSignDetector(RoadSignDetectorPattern):
 	def addTrainImage(self, train_img, name):
 		self.test_img.append([train_img, name])
 
-	def createVideo(self, images, framerate):
+	def createVideo(self, images, framerate, path):
 		height, width, layers = images[0].shape
-		video = cv2.VideoWriter("output.mp4", 0, framerate, (width, height))
+		video = cv2.VideoWriter(path, 0, framerate, (width, height))
 		for frame in images:
 			video.write(frame)
 		video.release()
-
-
-#TODO: two signs, args parsing
