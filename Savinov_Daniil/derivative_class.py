@@ -15,8 +15,7 @@ class Detector(DetectingPattern):
         super().__init__(standard_paths)
         self.standard_signs = {}
         for standard_path in self.standard_paths:
-            standard_path_name = standard_path.split('\\')[1]
-            standard_path_name = standard_path_name.split('.')[0]
+            standard_path_name = standard_path.split('\\')[1].split('.')[0]
             self.standard_signs[standard_path_name] = cv.imread(standard_path)
     
     
@@ -47,18 +46,15 @@ class Detector(DetectingPattern):
     
     
     def cluster_pts(self, good_matches: np.ndarray, query_kps: list,
-                    train_kps: list) -> Tuple[dict, dict] or Tuple[None, None]:
-        # Dictionary(ptQuery_ptTrain) = { (x_q, y_q): (x_t), (y_t) }
+                    train_kps: list) -> Tuple[dict, dict]:
         ptQuery_ptTrain = {}
         for DMatch in good_matches:
             pt_q = query_kps[DMatch.queryIdx].pt
             pt_t = train_kps[DMatch.trainIdx].pt
             ptQuery_ptTrain[pt_q] = pt_t
         
-        # Clustering via DBSCAN
-        clusterized = DBSCAN(eps=50, min_samples=10).fit_predict(list(ptQuery_ptTrain.keys()))
+        clusterized = DBSCAN(eps=35, min_samples=3).fit_predict(list(ptQuery_ptTrain.keys()))
         
-        # Dictionary(cluster_pts_q) = { cluster_name: [(x_q, y_q), ...] }
         cluster_pts_q = {}
         for gp, pt in zip(clusterized, list(ptQuery_ptTrain.keys())):
             if gp == -1:
@@ -68,8 +64,7 @@ class Detector(DetectingPattern):
                     cluster_pts_q[gp] = [pt]
                 else:
                     cluster_pts_q[gp].append(pt)
-
-        # Dictionary(cluster_pts_q) = { cluster_name: [(x_t, y_t), ...] }
+        
         cluster_pts_t = cp.deepcopy(cluster_pts_q)
         for cluster in cluster_pts_t:
             for i, pt in enumerate(cluster_pts_t[cluster]):
@@ -80,6 +75,8 @@ class Detector(DetectingPattern):
     
     def homography_clusters(self, cluster_pts_q: dict, cluster_pts_t: dict, query_img: np.ndarray,
                             train_img: np.ndarray, sign_name: str) -> np.ndarray:
+        res_img = query_img
+        
         for cluster in cluster_pts_q:
             src = np.float32(cluster_pts_t[cluster]).reshape(-1, 1, 2)
             dst = np.float32(cluster_pts_q[cluster]).reshape(-1, 1, 2)
@@ -90,24 +87,24 @@ class Detector(DetectingPattern):
             try:
                 dst = cv.perspectiveTransform(pts, M)
                 dst = [np.int32(dst)]
-                
-                res_img = cv.polylines(query_img, dst, True, 255, 3, cv.LINE_AA)
-                res_img = cv.putText(res_img, sign_name, tuple(dst[0][0][0]), cv.FONT_HERSHEY_DUPLEX,
-                                     1, (255, 0, 255), 1, cv.LINE_AA)
-            except Exception as e:
-                print(e)
-        try:
-            return res_img
-        except UnboundLocalError:
-            return query_img
+            except Exception:
+                print('NO PERSPECTIVE TRANSFORM!')
+                continue
+            
+            res_img = cv.polylines(query_img, dst, True, 255, 3, cv.LINE_AA)
+            res_img = cv.putText(res_img, sign_name, tuple(dst[0][0][0]), cv.FONT_HERSHEY_DUPLEX,
+                                 1, (255, 0, 255), 1, cv.LINE_AA)
+        
+        return res_img
     
     
-    def detect_on_image(self, query_img) -> np.ndarray:
+    def detect_on_image(self, query_img: np.ndarray) -> np.ndarray:
         for sign_name in self.standard_signs:
             train_img = self.standard_signs[sign_name]
             
             query_kps, query_des, train_kps, train_des = self.add_kps(query_img, train_img)
             good_matches = self.match_kps(query_des, train_des)
+            
             if len(good_matches):
                 cluster_pts_q, cluster_pts_t = self.cluster_pts(good_matches, query_kps, train_kps)
                 query_img = self.homography_clusters(cluster_pts_q, cluster_pts_t, query_img, train_img, sign_name)
@@ -117,18 +114,37 @@ class Detector(DetectingPattern):
     
     def detect_on_video(self, input_video_path: str, output_video_path: str) -> None:
         cap = cv.VideoCapture(input_video_path)
-        fps = cap.get(cv.CAP_PROP_FPS)
         w = int(cap.get(3))
         h = int(cap.get(4))
+        fps = cap.get(5)
         out = cv.VideoWriter(output_video_path, cv.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
-    
+        
+        i = 1
         while cap.isOpened():
             ret, query_img = cap.read()
             if ret:
-                out.write(self.detect_on_image(query_img))
+                print(f'NEW FRAME: #{i}')
+                res_img = self.detect_on_image(query_img)
+                out.write(res_img)
+                print(f'END OF FRAME: #{i}\n\n\n\n\n')
+                i += 1
             else:
                 break
         
         cap.release()
         out.release()
         cv.destroyAllWindows()
+
+
+
+if __name__ == '__main__':
+    
+    import glob
+    import os
+    
+    
+    standards = glob.glob(os.path.join('standards_resized', '*.png'))
+    input_video_path, output_video_path = r'videos\2-cut.mp4', 'result-of-2-cut.mp4'
+    
+    detector = Detector(standards)
+    detector.detect_on_video(input_video_path, output_video_path)

@@ -1,6 +1,6 @@
 import numpy as np
 from abc import abstractmethod
-from typing import Tuple
+from typing import Tuple, Dict
 
 
 class DetectingPattern:
@@ -20,7 +20,8 @@ class DetectingPattern:
     
     
     @abstractmethod
-    def cluster_pts(self, good_matches: np.ndarray, query_kps: list, train_kps: list) -> Tuple[dict, dict]:
+    def cluster_pts(self, good_matches: np.ndarray, query_kps: list,
+                    train_kps: list) -> Tuple[dict, dict]:
         pass
     
     
