@@ -19,9 +19,9 @@ signs: List[ImageAnalyzer] = []
 
 print("Start road sign uploading")
 index = 0
-signs_list = os.listdir(os.path.join(os.curdir, 'tst'))
+signs_list = os.listdir(os.path.join(os.curdir, 'test_signs'))
 for filename in signs_list:
-    image = cv2.imread(f'tst\\{filename}')
+    image = cv2.imread(f'test_signs\\{filename}')
     image = cv2.resize(image, (image.shape[0] * 2, image.shape[1] * 2))
     signs.append(ImageAnalyzer(image, ROAD_SIGN, filename.split('.')[0]))
     signs[index].plot_points()
