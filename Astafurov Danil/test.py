@@ -194,8 +194,6 @@ def detect_signs_dbscan():
                         old_rectangles.append((x1, y1, x2, y2))
 
         i += 1
-        cv2.imshow('image', img)
-        cv2.waitKey(0)
         writer.write(img)
 
     writer.release()
