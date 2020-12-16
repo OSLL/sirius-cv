@@ -15,7 +15,7 @@ class DetectingPattern:
     
     
     @abstractmethod
-    def match_kps(self, query_des: np.ndarray, train_des: np.ndarray) -> np.ndarray:
+    def match_kps(self, query_des: np.ndarray, train_des: np.ndarray, train_img, query_kps, train_kps) -> np.ndarray:
         pass
     
     

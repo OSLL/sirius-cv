@@ -9,7 +9,7 @@ from pattern_class import DetectingPattern
 
 
 
-class Detector(DetectingPattern):
+class HomographyDetector(DetectingPattern):
     
     def __init__(self, standard_paths: list) -> None:
         super().__init__(standard_paths)
@@ -28,7 +28,7 @@ class Detector(DetectingPattern):
         return query_kps, query_des, train_kps, train_des
     
     
-    def match_kps(self, query_des: np.ndarray, train_des: np.ndarray) -> np.ndarray:
+    def match_kps(self, query_des: np.ndarray, train_des: np.ndarray, train_img, query_kps, train_kps) -> np.ndarray:
         index_params = dict(algorithm=1, trees=5)
         search_params = dict(checks=50)
         flann = cv.FlannBasedMatcher(index_params, search_params)
@@ -37,10 +37,17 @@ class Detector(DetectingPattern):
         
         good_matches = []
         for i, (m, n) in enumerate(matches):
-            if m.distance < .5 * n.distance:
+            if m.distance < .8 * n.distance:
                 matchesMask[i] = [1, 0]
                 good_matches.append(m)
         good_matches = np.asarray(good_matches)
+        
+        # draw_params = dict(matchColor=(0, 255, 0),
+        #                    matchesMask=matchesMask,
+        #                    flags=cv.DRAW_MATCHES_FLAGS_NOT_DRAW_SINGLE_POINTS)
+        # matched_img = cv.drawMatchesKnn(self.query_img, query_kps, train_img, train_kps, matches, None, **draw_params)
+        # cv.imshow('', matched_img)
+        # cv.waitKey(0)
         
         return good_matches
     
@@ -53,7 +60,7 @@ class Detector(DetectingPattern):
             pt_t = train_kps[DMatch.trainIdx].pt
             ptQuery_ptTrain[pt_q] = pt_t
         
-        clusterized = DBSCAN(eps=35, min_samples=3).fit_predict(list(ptQuery_ptTrain.keys()))
+        clusterized = DBSCAN(eps=30, min_samples=7).fit_predict(list(ptQuery_ptTrain.keys()))
         
         cluster_pts_q = {}
         for gp, pt in zip(clusterized, list(ptQuery_ptTrain.keys())):
@@ -103,7 +110,7 @@ class Detector(DetectingPattern):
             train_img = self.standard_signs[sign_name]
             
             query_kps, query_des, train_kps, train_des = self.add_kps(query_img, train_img)
-            good_matches = self.match_kps(query_des, train_des)
+            good_matches = self.match_kps(query_des, train_des, train_img, query_kps, train_kps)
             
             if len(good_matches):
                 cluster_pts_q, cluster_pts_t = self.cluster_pts(good_matches, query_kps, train_kps)
@@ -114,19 +121,19 @@ class Detector(DetectingPattern):
     
     def detect_on_video(self, input_video_path: str, output_video_path: str) -> None:
         cap = cv.VideoCapture(input_video_path)
-        w = int(cap.get(3))
-        h = int(cap.get(4))
+        w = 2 * int(cap.get(3))
+        h = 2 * int(cap.get(4))
         fps = cap.get(5)
         out = cv.VideoWriter(output_video_path, cv.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
         
         i = 1
         while cap.isOpened():
             ret, query_img = cap.read()
+            self.query_img = cv.resize(query_img, None, fx=2., fy=2.)
             if ret:
                 print(f'NEW FRAME: #{i}')
-                res_img = self.detect_on_image(query_img)
-                out.write(res_img)
-                print(f'END OF FRAME: #{i}\n\n\n\n\n')
+                out.write(self.detect_on_image(self.query_img))
+                print(f'END OF FRAME: #{i}\n\n')
                 i += 1
             else:
                 break
@@ -143,8 +150,8 @@ if __name__ == '__main__':
     import os
     
     
-    standards = glob.glob(os.path.join('standards_resized', '*.png'))
+    standards = glob.glob(os.path.join('standards_resized', '*.PNG'))
     input_video_path, output_video_path = r'videos\2-cut.mp4', 'result-of-2-cut.mp4'
     
-    detector = Detector(standards)
+    detector = HomographyDetector(standards)
     detector.detect_on_video(input_video_path, output_video_path)
