@@ -1,7 +1,7 @@
 from .image_processor import ImageProcessor
 
 from sklearn.cluster import DBSCAN
-import matplotlib.pyplot as plt
+from functools import reduce
 import numpy as np
 import cv2
 
@@ -12,9 +12,17 @@ class SIFTDetector:
                  matcher_index_params=dict(algorithm=0, trees=5),
                  matcher_search_params=dict(checks=50),
                  matcher_knn_k=2,
-                 matcher_threshold=0.8):
+                 matcher_threshold=0.8,
+                 upscale_input=None,
+                 upscale_signs=None,
+                 dbscan_eps=40,
+                 dbscan_samples=1):
+        self.upscale_input = upscale_input
+        self.upscale_signs = upscale_signs
         self.matcher_threshold = matcher_threshold
         self.matcher_knn_k = matcher_knn_k
+        self.dbscan_eps = dbscan_eps
+        self.dbscan_samples = dbscan_samples
 
         self.sift = cv2.SIFT_create()
         self.matcher = cv2.FlannBasedMatcher(
@@ -25,17 +33,21 @@ class SIFTDetector:
         return self.sift.detectAndCompute(img, None)
 
     def prepare_signs(self, signs):
+        labels, imgs = reduce(lambda a, x: (a[0] + ([x[0]] if type(x[1]) == str else [x[0]] * len(x[1])),
+                                            a[1] + ([x[1]] if type(x[1]) == str else x[1])),
+                              signs.items(), ([], []))
         img, self.signs_size, self.signs_cnt = ImageProcessor.vconcat(
-            map(ImageProcessor.prepare_image, signs.values()))
+            map(ImageProcessor.prepare_image, imgs),
+            target_size=self.upscale_signs)
         self.sign_i = img
         self.sign_k, self.sign_d = self.compute_kp(img)
-        self.sign_l = list(signs.keys())
+        self.sign_l = labels
 
     def match(self, target, base):
         res = self.matcher.knnMatch(target, base, k=self.matcher_knn_k)
         return [i for (i, j) in res if i.distance < self.matcher_threshold * j.distance]
 
-    def group(self, base_k, match, dbscan_eps=40):
+    def group(self, base_k, match):
         pts = np.float32([(self.sign_k[m.queryIdx].pt,
                            base_k[m.trainIdx].pt) for m in match])
         if len(pts) == 0:
@@ -50,17 +62,20 @@ class SIFTDetector:
             if dst.shape[0] == 0:
                 continue
 
-            dbs = DBSCAN(eps=dbscan_eps, min_samples=1).fit(dst)
+            dbs = DBSCAN(eps=self.dbscan_eps,
+                         min_samples=self.dbscan_samples).fit(dst)
             valid_mask = np.zeros_like(dbs.labels_, dtype=bool)
             valid_mask[dbs.core_sample_indices_] = True
-            labels = dbs.labels_
+            labels = set(dbs.labels_) - {-1}
+            print([dst[(labels == i) & valid_mask] for i in labels])
             res[self.sign_l[sign_g]] = [tuple(np.int32(np.average(
-                dst[(labels == i) & valid_mask], axis=0))) for i in set(labels)]
+                dst[(labels == i) & valid_mask], axis=0))) for i in labels]
 
         return res
 
     def __call__(self, img):
-        base_img = ImageProcessor.prepare_image(img)
+        base_img = ImageProcessor.prepare_image(
+            img, target_size=self.upscale_input)
         base_k, base_d = self.compute_kp(base_img)
 
         match = self.match(self.sign_d, base_d)

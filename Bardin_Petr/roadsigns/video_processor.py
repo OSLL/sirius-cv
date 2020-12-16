@@ -17,7 +17,8 @@ class VideoProcessor:
             try:
                 img, data = self.detector(frame)
                 callback(int(stream.get(cv2.CAP_PROP_POS_MSEC)), img, data)
-            except:
+            except Exception as ex:
+                print(ex)
                 break
 
             if output:
