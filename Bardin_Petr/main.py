@@ -13,8 +13,8 @@ detector = SIFTDetector(signs,
                         matcher_threshold=0.7,
                         # upscale_signs=100,
                         # upscale_input=(720, 620)
-                        dbscan_eps=40,
-                        dbscan_samples=1
+                        dbscan_eps=100,
+                        dbscan_samples=3
                         )
 video = VideoProcessor(detector)
 

@@ -66,10 +66,9 @@ class SIFTDetector:
                          min_samples=self.dbscan_samples).fit(dst)
             valid_mask = np.zeros_like(dbs.labels_, dtype=bool)
             valid_mask[dbs.core_sample_indices_] = True
-            labels = set(dbs.labels_) - {-1}
-            print([dst[(labels == i) & valid_mask] for i in labels])
+            labels = dbs.labels_
             res[self.sign_l[sign_g]] = [tuple(np.int32(np.average(
-                dst[(labels == i) & valid_mask], axis=0))) for i in labels]
+                dst[(labels == i) & valid_mask], axis=0))) for i in (set(labels) - {-1})]
 
         return res
 
