@@ -9,7 +9,14 @@ SEARCH_PARAMETERS = {
     "checks": 50
 }
 
+FILTER_PARAMETERS = {
+    "k": 0.7,  # coefficient for points filtering
+    "min_samples": 5,  # for clustering
+    "eps": 40,  # max distance between two point (for clustering)
+}
+
 MIN_MATCH_COUNT = 10
 
 ROAD_SIGN = "ROAD_SIGN"
 IMAGE = "IMAGE"
+SCALE_COEFFICIENT = 2

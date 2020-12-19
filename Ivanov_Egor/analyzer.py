@@ -52,7 +52,7 @@ class PointsAnalyzer:
             )
 
         good_points = self.choose_good_points(
-            image.compare_points(sign_image), 0.7
+            image.compare_points(sign_image), FILTER_PARAMETERS['k']
         )
 
         if len(good_points) > 5:
@@ -62,7 +62,9 @@ class PointsAnalyzer:
                 for point in good_points
             ])
 
-            clustering = DBSCAN(min_samples=5, eps=40.0).fit(coordinates)
+            clustering = DBSCAN(
+                min_samples=FILTER_PARAMETERS['min_samples'],
+                eps=FILTER_PARAMETERS["eps"]).fit(coordinates)
             roadsigns_keypoints = []
 
             index = 0

@@ -6,12 +6,13 @@ import cv2
 from typing import List
 
 from analyzer import ImageAnalyzer, PointsAnalyzer
-from config import ROAD_SIGN, IMAGE
+from config import *
 
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--input", type=str, help="path to input video")
 parser.add_argument("--output", type=str, help="path to output video")
+parser.add_argument("--sings", type=str, help="path to sings")
 args = parser.parse_args()
 
 
@@ -21,33 +22,42 @@ print("Start road sign uploading")
 index = 0
 signs_list = os.listdir(os.path.join(os.curdir, 'test_signs'))
 for filename in signs_list:
-    image = cv2.imread(f'test_signs\\{filename}')
+    image = cv2.imread(f'{args.sings}\\{filename}')
     image = cv2.resize(image, (image.shape[0] * 2, image.shape[1] * 2))
     signs.append(ImageAnalyzer(image, ROAD_SIGN, filename.split('.')[0]))
     signs[index].plot_points()
     index += 1
 
-    sys.stdout.write(f"\rUploaded {index} of {len(signs)} \r")
+    sys.stdout.write(f"\rUploaded {index}/{len(signs)} \r")
 
 sys.stdout.write("\rRoad signs uploading completed\n")
 
 video_capture = cv2.VideoCapture()
 video_capture.open(args.input)
+length = int(video_capture.get(cv2.CAP_PROP_FRAME_COUNT))
 
 w = int(video_capture.get(cv2.CAP_PROP_FRAME_WIDTH))
 h = int(video_capture.get(cv2.CAP_PROP_FRAME_HEIGHT))
-fourcc = cv2.VideoWriter_fourcc('M', 'J', 'P', 'G')
-video_writer = cv2.VideoWriter(f"{args.output}", fourcc, 25, (w * 2, h * 2))
+fps = int(video_capture.get(cv2.CAP_PROP_FPS))
+fourcc = cv2.VideoWriter_fourcc(*'MJPG')
+video_writer = cv2.VideoWriter(
+    f"{args.output}", fourcc, fps,
+    (w * SCALE_COEFFICIENT, h * SCALE_COEFFICIENT)
+)
 
-sys.stdout.write("\rStart video processing\n")
+sys.stdout.write(f"\rProcessing video ({length} frames)\n")
 points_analyzer = PointsAnalyzer()
 frame_index = 0
-sys.stdout.write("\r\r")
 while video_capture.isOpened():
     result = video_capture.read()
     if result[0]:
-        frame = ImageAnalyzer(cv2.resize(result[1], (w * 2, h * 2)), IMAGE)
+        frame = ImageAnalyzer(
+            cv2.resize(
+                result[1], (w * SCALE_COEFFICIENT, h * SCALE_COEFFICIENT)
+            ), IMAGE
+        )
         frame.plot_points()
+
         output_image = frame.final_image.copy()
         for sign in signs:
             roadsigns = points_analyzer.find_roadsigns(frame, sign)
@@ -76,8 +86,14 @@ while video_capture.isOpened():
         break
 
     frame_index += 1
-    sys.stdout.write(f"\rProcessed {frame_index} frames\r")
+    done_percent = round(frame_index / length * 100, 2)
+    fill_count = round(done_percent / 4)
+    sys.stdout.write(
+        f"    |{''.join(['█' * fill_count, '.' * (25 - fill_count)])}|"
+        f" - {done_percent}% | ({frame_index}/{length} frames)\r"
+    )
+    sys.stdout.write("\r\r")
 
 video_capture.release()
 video_writer.release()
-sys.stdout.write("\rVideo processing completed\r")
+sys.stdout.write("\nVideo processing completed")
