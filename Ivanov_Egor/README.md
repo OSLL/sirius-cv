@@ -11,4 +11,5 @@ python test.py --input input.mp4 --output output.avi
 Также изображения знаков нужно поместить в директорию `test_signs`
 
 Пример детекции знаков:
+
 ![Детекция знаков, git изображение](output.gif)
