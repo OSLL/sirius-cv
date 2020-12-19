@@ -23,9 +23,12 @@
 ![](https://github.com/OSLL/sirius-cv/blob/master/docs/demo1.jpg?raw=true)
 
 На данном изображени находятся два различных знакам, один из них дублируется на изображении
-![](https://github.com/OSLL/sirius-cv/blob/25e83bb99a665aa4c1ce18e29047862eb230b0cf/Daniil_Komarov/demo.png?raw=true)
 
+![](https://github.com/OSLL/sirius-cv/blob/25e83bb99a665aa4c1ce18e29047862eb230b0cf/Daniil_Komarov/demo.png?raw=true)
+<br>
 Пример работы на видео
+<br>
+
 ![](./docs/demo_gif2.gif)
 
 <details>
