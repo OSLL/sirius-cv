@@ -19,14 +19,17 @@
 
 ## Демо участников [09.2020 - 12.2020]
 
-![](https://github.com/OSLL/sirius-cv/blob/25e83bb99a665aa4c1ce18e29047862eb230b0cf/Daniil_Komarov/demo.png?raw=true)
-
+На данном изорбражении находятся два различных знака
 ![](https://github.com/OSLL/sirius-cv/blob/master/docs/demo1.jpg?raw=true)
 
+На данном изображени находятся два различных знакам, один из них дублируется на изображении
+![](https://github.com/OSLL/sirius-cv/blob/25e83bb99a665aa4c1ce18e29047862eb230b0cf/Daniil_Komarov/demo.png?raw=true)
+
+Пример работы на видео
 ![](./docs/demo_gif2.gif)
 
 <details>
-  <summary>Expand!</summary>
+  <summary>Подробнее!</summary>
 <br>
 
 ![](./docs/demo_gif1.gif)
