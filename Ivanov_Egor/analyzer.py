@@ -55,7 +55,7 @@ class PointsAnalyzer:
             image.compare_points(sign_image), FILTER_PARAMETERS['k']
         )
 
-        if len(good_points) > 5:
+        if len(good_points) > FILTER_PARAMETERS['min_good_points_count']:
             coordinates = numpy.array([
                 [image.keypoints[point.queryIdx].pt[0],
                  image.keypoints[point.queryIdx].pt[1]]
