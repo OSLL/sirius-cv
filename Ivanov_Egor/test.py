@@ -23,7 +23,12 @@ index = 0
 signs_list = os.listdir(os.path.join(os.curdir, 'test_signs'))
 for filename in signs_list:
     image = cv2.imread(f'{args.sings}\\{filename}')
-    image = cv2.resize(image, (image.shape[0] * 2, image.shape[1] * 2))
+    image = cv2.resize(
+        image, (
+            image.shape[0] * SCALE_COEFFICIENT,
+            image.shape[1] * SCALE_COEFFICIENT
+        )
+    )
     signs.append(ImageAnalyzer(image, ROAD_SIGN, filename.split('.')[0]))
     signs[index].plot_points()
     index += 1
