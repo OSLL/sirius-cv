@@ -12,7 +12,7 @@ from config import *
 parser = argparse.ArgumentParser()
 parser.add_argument("--input", type=str, help="path to input video")
 parser.add_argument("--output", type=str, help="path to output video")
-parser.add_argument("--sings", type=str, help="path to sings")
+parser.add_argument("--signs", type=str, help="path to sings")
 args = parser.parse_args()
 
 
@@ -22,7 +22,7 @@ print("Start road sign uploading")
 index = 0
 signs_list = os.listdir(os.path.join(os.curdir, 'test_signs'))
 for filename in signs_list:
-    image = cv2.imread(f'{args.sings}\\{filename}')
+    image = cv2.imread(f'{args.signs}\\{filename}')
     image = cv2.resize(
         image, (
             image.shape[0] * SCALE_COEFFICIENT,
