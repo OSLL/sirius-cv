@@ -20,9 +20,10 @@ signs: List[ImageAnalyzer] = []
 
 print("Start road sign uploading")
 index = 0
-signs_list = os.listdir(os.path.join(os.curdir, args.signs))
+path_to_signs = os.path.join(os.curdir, args.signs)
+signs_list = os.listdir(path_to_signs)
 for filename in signs_list:
-    image = cv2.imread(f'{args.signs}\\{filename}')
+    image = cv2.imread(os.path.join(path_to_signs, filename))
     image = cv2.resize(
         image, (
             image.shape[0] * SCALE_COEFFICIENT,
