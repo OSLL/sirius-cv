@@ -53,7 +53,7 @@
 * Савинов Даниил ([github_profile](https://github.com/SaviDan245))
 * Иванов Егор ([github_profile](https://github.com/sibenshtern))
 * Астафуров Данил ([github profile](https://github.com/danil31219as))
-* Арина Гончарова ([github_profile](https://github.com/SaviDan245))
+* Арина Гончарова ([github_profile](https://github.com/arinagoncharova2005))
 * Ивова Олеся ([github_profile](https://github.com/lvovaa))
 
 ### Наставники
