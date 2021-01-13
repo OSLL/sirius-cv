@@ -21,3 +21,9 @@ This program analyzes video and finds user-defined road signs on it.
 `py .\main.py --sign STOP stop.png --sign T-INTERSECT t-intersection.png dt3.mp4 output.mp4`
 
 ![Demo image](https://github.com/OSLL/sirius-cv/raw/30_video_Daniil_Komarov/Daniil_Komarov/demo.png)
+
+## Requirements
+* opencv-python (v. 4.4.0.44)
+* numpy (v. 1.19.2)
+* scikit-learn (v. 0.23.2)
+* scipy (v. 1.5.4)
