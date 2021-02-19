@@ -1,3 +1,0 @@
-opencv-contrib-python==4.4.0.46
-opencv-python==4.4.0.46
-scikit-learn==0.23.2
