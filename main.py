@@ -7,17 +7,19 @@ from   tensorflow.keras import layers
 import matplotlib.pyplot as plt
 import shutil
 from   PIL import Image
+from   progressbar import progressbar
+import random
+from   datetime import datetime #to use time as random seed
+from   sklearn.model_selection import train_test_split
 
 gpus = tf.config.list_physical_devices('GPU')
 tf.config.experimental.set_virtual_device_configuration(
         gpus[0],
-        [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=5120)])
+        [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=1024*5)])
 
-def createModel():
+def createModel(mean_w, mean_h):
     # Model / data parameters
-    input_shape = (32, 32, 3)
-
-    x_train, y_train, x_test, y_test = load_dataset(num_classes)
+    input_shape = (mean_w, mean_h, 3)
 
     model = keras.Sequential(
         [
@@ -46,8 +48,24 @@ def createModel():
     )
     return model
 
-def train(model, batch_size, epochs):
-    model.summary()
+def train(model, batch_size, epochs, doCreateModel=False):
+    x, y, mean_w, mean_h, num_classes = load_dataset("Malaria_cell_dataset")
+    print("Dataset loaded; Image size:", mean_w, "x", mean_h)
+    std_x = standartize(x, mean_w, mean_h)
+    input("NP asarray begins")
+    std_x = np.asarray(std_x)
+    del x
+    input("255")
+    std_x /= 255.0
+    input("To categorical begins")
+    y = keras.utils.to_categorical(y, num_classes)
+    input("Loaded")
+
+    train_x, test_x, train_y, train_y = train_test_split(std_x, y, test_size=0.35)
+    input("Dataset split")
+
+    if(doCreateModel): model = createModel(mean_w, mean_h)
+
     datagen = keras.preprocessing.image.ImageDataGenerator(
         rotation_range=40,
         width_shift_range=0.2,
@@ -55,14 +73,22 @@ def train(model, batch_size, epochs):
         rescale=1./255,
         shear_range=0.2,
         zoom_range=0.2,
-        horizontal_flip=True,
-        fill_mode='nearest')
+        horizontal_flip=True)
+    datagen.fit(train_x)
+    input("Datagen fit")
+
+    model.summary()
     try:
+        loss = keras.losses.CategoricalCrossentropy()
         opt = keras.optimizers.Adam()
-        model.compile(loss="categorical_crossentropy", optimizer=opt, metrics=["accuracy"])
+        model.compile(loss=loss, optimizer=opt, metrics=["accuracy"])
+
+        input("Compiled")
+
         os.mkdir('checkpoint.model')
         checkpoint_callback = keras.callbacks.ModelCheckpoint(filepath='checkpoint.model/', save_weights_only=False, save_freq='epoch')
-        history = model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, validation_split=0.1, callbacks=[checkpoint_callback])
+        history = model.fit_generator(datagen.flow(train_x, train_y, batch_size=batch_size), epochs=epochs, validation_data=(test_x, test_y), callbacks=[checkpoint_callback])
+
         score = model.evaluate(x_test, y_test, verbose=0)
         print("Final test accuracy:", score[1])
         print_acc_plot(history)
@@ -112,9 +138,12 @@ def load_dataset(path):
     sum_h = 0
     img_types = [".jpg", ".png", ".jpeg"]
     label = 0
+    classes_count = count_classes(path)
+    if(classes_count > 1): print("Loading", classes_count, "classes")
+    else: print("Loading", classes_count, "class")
     for directory in os.listdir(path):
-        path_to_dir = path "/" + directory + "/"
-        for file in os.listdir(path_to_dir):
+        path_to_dir = path + "/" + directory + "/"
+        for file in progressbar(os.listdir(path_to_dir)):
             extension = os.path.splitext(file)[1]
             if(extension.lower() not in img_types): continue
             img = Image.open(os.path.join(path_to_dir, file))
@@ -125,22 +154,39 @@ def load_dataset(path):
             sum_w = sum_w + w
             sum_h = sum_h + h
         label += 1
-    return x, y, int(sum_w/len(x)), int(sum_h/len(x))
+    return x, y, int(sum_w/len(x)), int(sum_h/len(x)), classes_count
 
-def standartize(raw_x, mean_W, mean_h):
+def count_classes(path):
+    counter = 0
+    for directory in os.listdir(path):
+        counter += 1
+    return counter
+
+def standartize(raw_x, mean_w, mean_h):
     x = []
-    for img in raw_x:
+    print("Standartizing...")
+    for img in progressbar(raw_x):
         w, h = img.size
         if(mean_h > h):
-            new_x = int(w * mena_h/float(h))
+            new_x = int(w * mean_h/float(h))
             img = img.resize((new_x, mean_h))
         w, h = img.size
         if(mean_w > w):
             new_y = int(h * mean_w/float(w))
             img = img.resize((mean_w, new_y))
-        img = randomCrop(img, mean_w, mean_h).resize((int(mean_w/3), int(mean_h/3)))
-        x.append(np.asarray(img))
+        img = randomCrop(img, mean_w, mean_h)
+        x.append(np.asarray(img))   
     return x
+
+def randomCrop(img, w_mean, h_mean):
+    random.seed(datetime.now())
+    w, h = img.size
+    w_over = w - w_mean
+    h_over = h - h_mean
+    w_padding = random.randint(0, w_over)
+    h_padding = random.randint(0, h_over)
+    img = img.crop((w_padding, h_padding, w_padding+w_mean, h_padding+h_mean))
+    return img
 
 if(__name__ == "__main__"):
     num_classes = 10
@@ -153,6 +199,5 @@ if(__name__ == "__main__"):
         if(inp == 'N' or inp == 'n' or inp == ''): break
 
     if(create):
-        model = createModel()
-        train(model, 32, 15)
+        train(None, 32, 15, doCreateModel=True)
     else: load_and_test()
