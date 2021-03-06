@@ -12,9 +12,7 @@ tf.config.experimental.set_virtual_device_configuration(
         gpus[0],
         [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=5120)])
 
-num_classes = 10
-
-def train():
+def createModel():
     # Model / data parameters
     input_shape = (32, 32, 3)
 
@@ -24,21 +22,43 @@ def train():
         [
             keras.Input(shape=input_shape),
             layers.Conv2D(32, kernel_size=(3, 3), activation="relu"),
+            layers.Dropout(0.2),
+            layers.Conv2D(32, kernel_size=(3, 3), activation="relu"),
             layers.MaxPooling2D(pool_size=(2, 2)),
+            layers.BatchNormalization(),
+
+            layers.Conv2D(64, kernel_size=(3, 3), activation="relu"),
+            layers.Dropout(0.2),
             layers.Conv2D(64, kernel_size=(3, 3), activation="relu"),
             layers.MaxPooling2D(pool_size=(2, 2)),
+            layers.BatchNormalization(),
+
+            layers.Conv2D(128, kernel_size=(3, 3), activation="relu"),
+            layers.Dropout(0.2),
+            layers.MaxPooling2D(pool_size=(2, 2)),
+            layers.BatchNormalization(),
+
             layers.Flatten(),
-            layers.Dropout(0.5),
+            layers.Dense(1024, activation="relu"),
             layers.Dense(num_classes, activation="softmax"),
         ]
     )
+    return model
 
-    #model.summary()
-
-    batch_size = 128
-    epochs = 100
+def train(model, batch_size, epochs):
+    model.summary()
+    datagen = keras.preprocessing.image.ImageDataGenerator(
+        rotation_range=40,
+        width_shift_range=0.2,
+        height_shift_range=0.2,
+        rescale=1./255,
+        shear_range=0.2,
+        zoom_range=0.2,
+        horizontal_flip=True,
+        fill_mode='nearest')
     try:
-        model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
+        opt = keras.optimizers.Adam()
+        model.compile(loss="categorical_crossentropy", optimizer=opt, metrics=["accuracy"])
         os.mkdir('checkpoint.model')
         checkpoint_callback = keras.callbacks.ModelCheckpoint(filepath='checkpoint.model/', save_weights_only=False, save_freq='epoch')
         history = model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, validation_split=0.1, callbacks=[checkpoint_callback])
@@ -51,6 +71,7 @@ def train():
         shutil.rmtree('checkpoint.model')
     except KeyboardInterrupt:
         print("Exiting...")
+        shutil.rmtree('checkpoint.model')
 
 def load_and_test():
     while(True): #check user's input
@@ -61,11 +82,17 @@ def load_and_test():
         except OSError:
             print("Model not found, try again!")
     print('\n')
-    model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
+    opt = keras.optimizers.SGD(lr=0.001, momentum=0.9)
+    model.compile(loss="categorical_crossentropy", optimizer=opt, metrics=["accuracy"])
     print("Model loaded")
+    do_train = False
+    while(True):
+        inp = input("Train model? [y/N]")
+        if(inp == 'Y' or inp == 'y'):
+            do_train = True
+            break
+        if(inp == 'N' or inp == 'n' or inp == ''): break
     x_train, y_train, x_test, y_test = load_dataset(num_classes)
-    score = model.evaluate(x_test, y_test, verbose=0)
-    print("Final test accuracy:", score[1])
 
 def print_acc_plot(history):
     plt.plot(history.history['accuracy'])
@@ -93,13 +120,16 @@ def load_dataset(num_classes):
     return x_train, y_train, x_test, y_test
 
 if(__name__ == "__main__"):
-    do_train = False
+    num_classes = 10
+    create = False
     while(True):
-        inp = input("Train model? [y/N]")
+        inp = input("Create new model? [y/N]")
         if(inp == 'Y' or inp == 'y'):
-            do_train = True
+            create = True
             break
         if(inp == 'N' or inp == 'n' or inp == ''): break
 
-    if(do_train): train()
+    if(create):
+        model = createModel()
+        train(model, 32, 15)
     else: load_and_test()
