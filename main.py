@@ -6,6 +6,7 @@ from   tensorflow import keras
 from   tensorflow.keras import layers
 import matplotlib.pyplot as plt
 import shutil
+from   PIL import Image
 
 gpus = tf.config.list_physical_devices('GPU')
 tf.config.experimental.set_virtual_device_configuration(
@@ -103,21 +104,43 @@ def print_acc_plot(history):
     plt.legend(['Train', 'Test'], loc='upper left')
     plt.show()
 
-def load_dataset(num_classes):
-    (x_train, y_train), (x_test, y_test) = keras.datasets.cifar10.load_data()
-    # Scale images to the [0, 1] range
-    x_train = x_train.astype("float32") / 255
-    x_test = x_test.astype("float32") / 255
-    print('-'*50)
-    print('Dataset loaded')
-    print('x_train shape:', x_train.shape)
-    print(x_train.shape[0], "train samples")
-    print(x_test.shape[0], "test samples")
-    print('-'*50)
-    # convert class vectors to binary class matrices
-    y_train = keras.utils.to_categorical(y_train, num_classes)
-    y_test = keras.utils.to_categorical(y_test, num_classes)
-    return x_train, y_train, x_test, y_test
+def load_dataset(path):
+    x = []
+    y = []
+    #crop params
+    sum_w = 0
+    sum_h = 0
+    img_types = [".jpg", ".png", ".jpeg"]
+    label = 0
+    for directory in os.listdir(path):
+        path_to_dir = path "/" + directory + "/"
+        for file in os.listdir(path_to_dir):
+            extension = os.path.splitext(file)[1]
+            if(extension.lower() not in img_types): continue
+            img = Image.open(os.path.join(path_to_dir, file))
+            img.load()
+            w, h = img.size
+            x.append(img)
+            y.append(label)
+            sum_w = sum_w + w
+            sum_h = sum_h + h
+        label += 1
+    return x, y, int(sum_w/len(x)), int(sum_h/len(x))
+
+def standartize(raw_x, mean_W, mean_h):
+    x = []
+    for img in raw_x:
+        w, h = img.size
+        if(mean_h > h):
+            new_x = int(w * mena_h/float(h))
+            img = img.resize((new_x, mean_h))
+        w, h = img.size
+        if(mean_w > w):
+            new_y = int(h * mean_w/float(w))
+            img = img.resize((mean_w, new_y))
+        img = randomCrop(img, mean_w, mean_h).resize((int(mean_w/3), int(mean_h/3)))
+        x.append(np.asarray(img))
+    return x
 
 if(__name__ == "__main__"):
     num_classes = 10
