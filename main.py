@@ -12,37 +12,45 @@ import random
 from   datetime import datetime #to use time as random seed
 from   sklearn.model_selection import train_test_split
 
+#memory limit to fix CUDA Compute bug
 gpus = tf.config.list_physical_devices('GPU')
 tf.config.experimental.set_virtual_device_configuration(
         gpus[0],
         [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=1024*5)])
 
-def createModel(mean_w, mean_h):
+def createModel(mean_w, mean_h, num_classes):
     # Model / data parameters
-    input_shape = (mean_w, mean_h, 3)
+    input_shape = (mean_h, mean_w, 3)
 
     model = keras.Sequential(
         [
             keras.Input(shape=input_shape),
             layers.Conv2D(32, kernel_size=(3, 3), activation="relu"),
-            layers.Dropout(0.2),
+            layers.Dropout(0.5),
             layers.Conv2D(32, kernel_size=(3, 3), activation="relu"),
             layers.MaxPooling2D(pool_size=(2, 2)),
             layers.BatchNormalization(),
 
             layers.Conv2D(64, kernel_size=(3, 3), activation="relu"),
-            layers.Dropout(0.2),
+            layers.Dropout(0.5),
             layers.Conv2D(64, kernel_size=(3, 3), activation="relu"),
             layers.MaxPooling2D(pool_size=(2, 2)),
             layers.BatchNormalization(),
 
             layers.Conv2D(128, kernel_size=(3, 3), activation="relu"),
-            layers.Dropout(0.2),
+            layers.Dropout(0.5),
+            layers.Conv2D(128, kernel_size=(3, 3), activation="relu"),
+            layers.MaxPooling2D(pool_size=(2, 2)),
+            layers.BatchNormalization(),
+
+            layers.Conv2D(256, kernel_size=(3, 3), activation="relu"),
+            layers.Dropout(0.5),
+            layers.Conv2D(256, kernel_size=(3, 3), activation="relu"),
             layers.MaxPooling2D(pool_size=(2, 2)),
             layers.BatchNormalization(),
 
             layers.Flatten(),
-            layers.Dense(1024, activation="relu"),
+            layers.Dense(4096, activation="relu"),
             layers.Dense(num_classes, activation="softmax"),
         ]
     )
@@ -50,32 +58,16 @@ def createModel(mean_w, mean_h):
 
 def train(model, batch_size, epochs, doCreateModel=False):
     x, y, mean_w, mean_h, num_classes = load_dataset("Malaria_cell_dataset")
-    print("Dataset loaded; Image size:", mean_w, "x", mean_h)
     std_x = standartize(x, mean_w, mean_h)
-    input("NP asarray begins")
-    std_x = np.asarray(std_x)
+    std_x = np.asarray(std_x, dtype=np.float32)
     del x
-    input("255")
     std_x /= 255.0
-    input("To categorical begins")
     y = keras.utils.to_categorical(y, num_classes)
-    input("Loaded")
+    print("Dataset loaded; Image size:", mean_w, "x", mean_h)
 
-    train_x, test_x, train_y, train_y = train_test_split(std_x, y, test_size=0.35)
-    input("Dataset split")
+    train_x, test_x, train_y, test_y = train_test_split(std_x, y, test_size=0.35)
 
-    if(doCreateModel): model = createModel(mean_w, mean_h)
-
-    datagen = keras.preprocessing.image.ImageDataGenerator(
-        rotation_range=40,
-        width_shift_range=0.2,
-        height_shift_range=0.2,
-        rescale=1./255,
-        shear_range=0.2,
-        zoom_range=0.2,
-        horizontal_flip=True)
-    datagen.fit(train_x)
-    input("Datagen fit")
+    if(doCreateModel): model = createModel(mean_w, mean_h, num_classes)
 
     model.summary()
     try:
@@ -83,13 +75,11 @@ def train(model, batch_size, epochs, doCreateModel=False):
         opt = keras.optimizers.Adam()
         model.compile(loss=loss, optimizer=opt, metrics=["accuracy"])
 
-        input("Compiled")
-
         os.mkdir('checkpoint.model')
         checkpoint_callback = keras.callbacks.ModelCheckpoint(filepath='checkpoint.model/', save_weights_only=False, save_freq='epoch')
-        history = model.fit_generator(datagen.flow(train_x, train_y, batch_size=batch_size), epochs=epochs, validation_data=(test_x, test_y), callbacks=[checkpoint_callback])
+        history = model.fit(train_x, train_y, batch_size=batch_size, epochs=epochs, validation_data=(test_x, test_y), callbacks=[checkpoint_callback])
 
-        score = model.evaluate(x_test, y_test, verbose=0)
+        score = model.evaluate(test_x, test_y, verbose=0)
         print("Final test accuracy:", score[1])
         print_acc_plot(history)
         name = input("Enter model name: ")
