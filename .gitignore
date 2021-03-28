@@ -346,3 +346,4 @@ dmypy.json
 *.webm
 
 # End of https://www.toptal.com/developers/gitignore/api/images,video,python,pycharm,code,jupyternotebooks
+.DS_Store
