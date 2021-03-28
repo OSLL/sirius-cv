@@ -1,24 +1,40 @@
-import cv2 as cv
 import numpy as np
 from abc import abstractmethod
-from typing import Tuple
+from typing import Tuple, Dict
 
 
-class Pattern:
-    def __init__(self, test_img: np.ndarray, query_img: np.ndarray) -> None:
-        self.test_img: np.ndarray = test_img
-        self.query_img: np.ndarray = query_img
-
+class DetectingPattern:
+    def __init__(self, standard_paths: list) -> None:
+        self.standard_paths = standard_paths
+    
+    
     @abstractmethod
-    def add_kps(self) -> Tuple[list, np.ndarray, list, np.ndarray]:
+    def add_kps(self, query_img: np.ndarray,
+                train_img: np.ndarray) -> Tuple[list, np.ndarray, list, np.ndarray]:
         pass
-
+    
+    
     @abstractmethod
-    def draw_single_match(self, test_kps: list, test_des: np.ndarray,
-                          query_kps: list, query_des: np.ndarray,
-                          method=cv.NORM_HAMMING, crossCheck=True, flags=2) -> np.ndarray:
+    def match_kps(self, query_des: np.ndarray, train_des: np.ndarray, train_img, query_kps, train_kps) -> np.ndarray:
         pass
-
+    
+    
     @abstractmethod
-    def draw_multi_match(self, threshold: float = 0.8) -> np.ndarray:
+    def cluster_pts(self, good_matches: np.ndarray, query_kps: list,
+                    train_kps: list) -> Tuple[dict, dict]:
+        pass
+    
+    
+    @abstractmethod
+    def homography_clusters(self, cluster_pts_q: dict, cluster_pts_t: dict, query_img: np.ndarray,
+                            train_img: np.ndarray, sign_name: str) -> np.ndarray:
+        pass
+    
+    
+    @abstractmethod
+    def detect_on_image(self, query_img) -> np.ndarray:
+        pass
+    
+    
+    def detect_on_video(self, input_video_path: str, output_video_path: str) -> None:
         pass
