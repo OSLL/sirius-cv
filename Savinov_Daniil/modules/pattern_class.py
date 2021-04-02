@@ -1,6 +1,7 @@
-import numpy as np
 from abc import abstractmethod
-from typing import Tuple, Dict
+from typing import Tuple
+
+import numpy as np
 
 
 class DetectingPattern:
