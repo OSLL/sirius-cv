@@ -10,7 +10,7 @@ query_img = cv.imread(r'query_images/query_4.jpg')
 # input_video_path, output_video_path = 'videos/2.mp4', 'new-result-of-2-video.mp4'
 
 detector = CustomDetector(standards)
-res_img, detected_signs_types = detector.detect_on_image(query_img)
+res_img, detected_signs_types, coords = detector.detect_on_image(query_img)
 print('\n\n\n', detected_signs_types, '\n\n\n')
 cv.imshow('result', res_img)
 cv.waitKey(0)
