@@ -14,9 +14,13 @@ from   sklearn.model_selection import train_test_split
 
 #memory limit to fix CUDA Compute bug
 gpus = tf.config.list_physical_devices('GPU')
+print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
 tf.config.experimental.set_virtual_device_configuration(
         gpus[0],
         [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=1024*5)])
+
+MULTI_GPU = True
+
 
 def createModel(mean_w, mean_h, num_classes):
     # Model / data parameters
@@ -56,39 +60,40 @@ def createModel(mean_w, mean_h, num_classes):
     )
     return model
 
-def train(model, batch_size, epochs, doCreateModel=False):
-    x, y, mean_w, mean_h, num_classes = load_dataset("Malaria_cell_dataset")
-    std_x = standartize(x, mean_w, mean_h)
-    std_x = np.asarray(std_x, dtype=np.float32)
-    del x
-    std_x /= 255.0
-    y = keras.utils.to_categorical(y, num_classes)
-    print("Dataset loaded; Image size:", mean_w, "x", mean_h)
+def train(model, strategy, batch_size, epochs, doCreateModel=False):
+    with strategy:
+        x, y, mean_w, mean_h, num_classes = load_dataset("Malaria_cell_dataset")
+        std_x = standartize(x, mean_w, mean_h)
+        std_x = np.asarray(std_x, dtype=np.float32)
+        del x
+        std_x /= 255.0
+        y = keras.utils.to_categorical(y, num_classes)
+        print("Dataset loaded; Image size:", mean_w, "x", mean_h)
 
-    train_x, test_x, train_y, test_y = train_test_split(std_x, y, test_size=0.35)
+        train_x, test_x, train_y, test_y = train_test_split(std_x, y, test_size=0.35)
 
-    if(doCreateModel): model = createModel(mean_w, mean_h, num_classes)
+        if(doCreateModel): model = createModel(mean_w, mean_h, num_classes)
 
-    model.summary()
-    try:
-        loss = keras.losses.CategoricalCrossentropy()
-        opt = keras.optimizers.Adam()
-        model.compile(loss=loss, optimizer=opt, metrics=["accuracy"])
+        model.summary()
+        try:
+            loss = keras.losses.CategoricalCrossentropy()
+            opt = keras.optimizers.Adam()
+            model.compile(loss=loss, optimizer=opt, metrics=["accuracy"])
 
-        os.mkdir('checkpoint.model')
-        checkpoint_callback = keras.callbacks.ModelCheckpoint(filepath='checkpoint.model/', save_weights_only=False, save_freq='epoch')
-        history = model.fit(train_x, train_y, batch_size=batch_size, epochs=epochs, validation_data=(test_x, test_y), callbacks=[checkpoint_callback])
+            os.mkdir('checkpoint.model')
+            checkpoint_callback = keras.callbacks.ModelCheckpoint(filepath='checkpoint.model/', save_weights_only=False, save_freq='epoch')
+            history = model.fit(train_x, train_y, batch_size=batch_size, epochs=epochs, validation_data=(test_x, test_y), callbacks=[checkpoint_callback])
 
-        score = model.evaluate(test_x, test_y, verbose=0)
-        print("Final test accuracy:", score[1])
-        print_acc_plot(history)
-        name = input("Enter model name: ")
-        model.save(name+'.model')
-        print("Saved successfully, removing backup...")
-        shutil.rmtree('checkpoint.model')
-    except KeyboardInterrupt:
-        print("Exiting...")
-        shutil.rmtree('checkpoint.model')
+            score = model.evaluate(test_x, test_y, verbose=0)
+            print("Final test accuracy:", score[1])
+            print_acc_plot(history)
+            name = input("Enter model name: ")
+            model.save(name+'.model')
+            print("Saved successfully, removing backup...")
+            shutil.rmtree('checkpoint.model')
+        except KeyboardInterrupt:
+            print("Exiting...")
+            shutil.rmtree('checkpoint.model')
 
 def load_and_test():
     while(True): #check user's input
@@ -178,6 +183,10 @@ def randomCrop(img, w_mean, h_mean):
     img = img.crop((w_padding, h_padding, w_padding+w_mean, h_padding+h_mean))
     return img
 
+if(MULTI_GPU):
+    strategy = tf.distribute.MirroredStrategy()
+    print('Number of devices: {}'.format(strategy.num_replicas_in_sync))
+
 if(__name__ == "__main__"):
     num_classes = 10
     create = False
@@ -189,5 +198,6 @@ if(__name__ == "__main__"):
         if(inp == 'N' or inp == 'n' or inp == ''): break
 
     if(create):
-        train(None, 32, 15, doCreateModel=True)
+        if(MULTI_GPU): train(None, strategy, 32, 15, doCreateModel=True)
+        else: train(None, None, 32, 15, doCreateModel=True)
     else: load_and_test()
