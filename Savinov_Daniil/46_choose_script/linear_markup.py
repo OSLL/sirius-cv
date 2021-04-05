@@ -32,11 +32,7 @@ class LinearMarkup:
         # standards - папка с ground-truth изображениями знаков
         standards = glob.glob(os.path.join('standards_resized', '*.png'))
         detector = CustomDetector(standards)
-        # detector.detect_on_image ДОЛЖЕН ВОЗВРАЩАТЬ ТРИ АРГУМЕНТА:
-            # 1) Изображение с bounding box-ами;
-            # 2) Типы детектированных знаков (на данном изображении);
-            # 3) Координаты bounding box-ов для каждого детектированного знака.
-        res_img, detected_signs_types, coords = detector.detect_on_image(query_img)
+        res_img, markup = detector.detect_image(query_img)
         img_file_name = f'img_{i + 1}.{self.output_img_format}'
 
         cv.imshow(img_file_name, res_img)
@@ -48,10 +44,7 @@ class LinearMarkup:
             with open(os.path.join(self.output_folder_path, 'markup.json'), 'w') as out_json:
                 self.markup_dict.update(
                     {
-                        'file_name': img_file_name,
-                        'signs_amount': len(coords),
-                        'sign_types': detected_signs_types,
-                        'coordinates': coords
+                        img_file_name: markup
                     }
                 )
                 json.dump(self.markup_dict, out_json, indent=4)

@@ -132,6 +132,7 @@ class HomographyDetector(DetectingPattern):
             else:
                 break
 
+
         cap.release()
         out.release()
         cv.destroyAllWindows()

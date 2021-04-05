@@ -36,6 +36,6 @@ class DetectingPattern:
     def detect_on_image(self, query_img) -> np.ndarray:
         pass
     
-    
+    @abstractmethod
     def detect_on_video(self, input_video_path: str, output_video_path: str) -> None:
         pass
