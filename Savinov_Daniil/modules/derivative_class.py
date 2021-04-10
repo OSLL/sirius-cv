@@ -8,6 +8,7 @@ from sklearn.cluster import DBSCAN
 from modules.pattern_class import DetectingPattern
 
 
+
 class HomographyDetector(DetectingPattern):
 
     def __init__(self, standard_paths: list) -> None:

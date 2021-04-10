@@ -9,6 +9,11 @@ from modules.derivative_class_upd import CustomDetector
 
 
 
+def custom_assert(item: object, Error=AssertionError, message='') -> None or Exception:
+    if not item:
+        raise Error(message)
+
+
 class LinearMarkup:
 
     def __init__(self, output_folder_path='linear_markup_results', output_img_format='png'):
@@ -21,31 +26,47 @@ class LinearMarkup:
         self.output_folder_path = output_folder_path
         self.output_img_format = output_img_format
         self.markup_dict = {}
+        self.standards = glob.glob(
+            os.path.join('standards', '*.png') and
+            os.path.join('standards', '*.PNG') and
+            os.path.join('standards', '*.jpg') and
+            os.path.join('standards', '*.jpeg')
+        )
 
     def img_markup(self, query_img: np.ndarray, i: int) -> None:
         """
-        Appending the image to dataset and markup (or not).
+        Append useful images and its markup to dataset, and print the log.
         Args:
             query_img (numpy.ndarray): Read image.
             i (integer): Index of current iteration loop.
         """
-        # standards - папка с ground-truth изображениями знаков
-        standards = glob.glob(os.path.join('standards_resized', '*.png'))
-        detector = CustomDetector(standards)
-        res_img, markup = detector.detect_image(query_img)
+        res_img, markup = None, None
+        custom_assert(self.standards, FileExistsError, 'No standard images were found')
+        detector = CustomDetector(self.standards)
         img_file_name = f'img_{i + 1}.{self.output_img_format}'
-
-        cv.imshow(img_file_name, res_img)
-        if cv.waitKey(33) == 50:
-            cv.imwrite(
-                os.path.join(self.output_folder_path, 'images', img_file_name),
-                query_img
-            )
-            with open(os.path.join(self.output_folder_path, 'markup.json'), 'w') as out_json:
-                self.markup_dict.update(
-                    {
-                        img_file_name: markup
-                    }
-                )
-                json.dump(self.markup_dict, out_json, indent=4)
-        cv.destroyAllWindows()
+        try:
+            res_img, markup = detector.detect_image(query_img)
+        except Exception:
+            custom_assert(res_img, NameError, 'No result image was returned')
+            raise ProcessLookupError('Detector cannot detect the image')
+        else:
+            if markup['signs']:
+                cv.imshow(img_file_name, res_img)
+                if cv.waitKey(33) == 50:  # "2" key -- append
+                    cv.imwrite(
+                        os.path.join(self.output_folder_path, 'images', img_file_name),
+                        query_img
+                    )
+                    with open(os.path.join(self.output_folder_path, 'markup.json'), 'w') as out_json:
+                        self.markup_dict.update(
+                            {
+                                img_file_name: markup
+                            }
+                        )
+                        json.dump(self.markup_dict, out_json, indent=4)
+                    cv.destroyAllWindows()
+                    print(f'Image {img_file_name} (#{i + 1}) and markup were successfully writen')  # "2" key
+                print(f'Image {img_file_name} (#{i + 1}) was skipped')  # "1" key
+            print(f'In the image {img_file_name} (#{i + 1}) were no signs detected')  # no signs
+        finally:
+            print(f'End processing #{i + 1}: {img_file_name}')
