@@ -1,9 +1,7 @@
-import sys
-import glob
-
 import numpy as np
 import matplotlib.pyplot as plt
 import cv2 as cv
+
 
 
 def imshow(img: np.ndarray, label='', cv_color=True) -> None:
