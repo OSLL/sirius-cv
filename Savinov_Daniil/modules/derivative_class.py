@@ -1,5 +1,6 @@
 import copy as cp
 from typing import Tuple
+from pathlib import Path
 
 import cv2 as cv
 import numpy as np
@@ -15,7 +16,9 @@ class HomographyDetector(DetectingPattern):
         super().__init__(standard_paths)
         self.standard_signs = {}
         for standard_path in self.standard_paths:
-            standard_path_name = standard_path.split(r'/')[1].split('.')[0]
+            standard_path_name = Path(standard_path).name.split('.')[0]
+            # standard_path_name = standard_path.split(r'/')[1].split('.')[0]
+            print(standard_path)
             self.standard_signs[standard_path_name] = cv.imread(standard_path)
 
     def add_kps(self, query_img: np.ndarray, train_img: np.ndarray) -> Tuple[list, np.ndarray, list, np.ndarray]:

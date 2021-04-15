@@ -1,0 +1,1305 @@
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 146572833334 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 146576763000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 146575549000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 146576871000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 146582903334 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 146580994334 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 146584732000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 146582839334 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 146587273667 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 146585320333 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 146589212000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 146583517667 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 146587935667 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 146588423000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 146591083333 for FFmpeg
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: Timestamp conversion failed for 138900001: no reference clock
+main error: Could not convert timestamp 0 for FFmpeg
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+main error: Timestamp conversion failed for 2771001: no reference clock
+main error: Could not convert timestamp 0 for FFmpeg
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: Timestamp conversion failed for 479287129: no reference clock
+main error: Could not convert timestamp 0 for FFmpeg
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: Timestamp conversion failed for 37883001: no reference clock
+main error: Could not convert timestamp 0 for FFmpeg
+main error: Timestamp conversion failed for 57367001: no reference clock
+main error: Could not convert timestamp 0 for FFmpeg
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: Timestamp conversion failed (delay 1000000, buffering 0, bound 9000000)
+main error: Could not convert timestamp 428863014211 for FFmpeg
+main error: Timestamp conversion failed for 33043923: no reference clock
+main error: Could not convert timestamp 0 for FFmpeg
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 489842274455 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 489845003500 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 489850155945 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 489857369189 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 489860398989 for FFmpeg
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 489864735444 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 489871398778 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 489867972245 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 489870696278 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 489877691555 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 489873408189 for FFmpeg
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+main: playlist is empty
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 418607708254 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 418606907248 for FFmpeg
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+main error: Timestamp conversion failed for 54326001: no reference clock
+main error: Could not convert timestamp 0 for FFmpeg
+main error: Timestamp conversion failed for 357597016: no reference clock
+main error: Could not convert timestamp 0 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 156568065869 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 156571323880 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 156571728549 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 156572032429 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 156572017508 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 156572298303 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 156572711360 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 156572828573 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 0, bound 9000000)
+main error: Could not convert timestamp 156582334508 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 3000000)
+main error: Could not convert timestamp 156591353239 for faad
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 156573214103 for FFmpeg
+main error: Timestamp conversion failed for 140116001: no reference clock
+main error: Could not convert timestamp 0 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 156573505267 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 156573649383 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 3000000)
+main error: Could not convert timestamp 156572380888 for faad
+main error: Timestamp conversion failed for 90692016: no reference clock
+main error: Could not convert timestamp 0 for FFmpeg
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: buffer deadlock prevented
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 156851257240 for FFmpeg
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 156897853292 for FFmpeg
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+mpeg4audio: AAC channels: 1 samplerate: 44100
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+main error: Failed to change Viewpoint
+main error: Failed to change Viewpoint
+main error: Failed to change Viewpoint
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+mpeg4audio: AAC channels: 1 samplerate: 44100
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 3000000)
+main error: Could not convert timestamp 169077144659 for faad
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 3000000)
+main error: Could not convert timestamp 169077167879 for faad
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 3000000)
+main error: Could not convert timestamp 169077191099 for faad
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 3000000)
+main error: Could not convert timestamp 169077214319 for faad
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+main error: Timestamp conversion failed for 483777001: no reference clock
+main error: Could not convert timestamp 0 for FFmpeg
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+mpeg4audio: AAC channels: 1 samplerate: 44100
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+mpeg4audio: AAC channels: 1 samplerate: 44100
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 412584863492 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 412589184897 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 412588294709 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 412589395376 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 412587454303 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 412591404375 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 412589409972 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 412597971577 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 412602328317 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 412607803611 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 412604031723 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 412605853278 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 412611783344 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 412610510043 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 412658595974 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 412663777046 for FFmpeg
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 530801462843 for FFmpeg
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 530873832163 for FFmpeg
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: Timestamp conversion failed for 257720001: no reference clock
+main error: Could not convert timestamp 0 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 679446034001 for FFmpeg
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 911858676201 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 911861155841 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 911861227503 for FFmpeg
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 1021143381330 for FFmpeg
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 1106677559866 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 0, bound 9000000)
+main error: Could not convert timestamp 1106680829577 for FFmpeg
+main error: Timestamp conversion failed for 35443678: no reference clock
+main error: Could not convert timestamp 0 for FFmpeg
+main error: Timestamp conversion failed for 45826789: no reference clock
+main error: Could not convert timestamp 0 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 1106695385822 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 1106688004622 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 1106706783433 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 1106707661400 for FFmpeg
+main error: Timestamp conversion failed for 63912589: no reference clock
+main error: Could not get display date for timestamp 0
+main error: Timestamp conversion failed for 63912589: no reference clock
+main error: Could not convert timestamp 0 for FFmpeg
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 89990032439 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 89998712489 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 89998871759 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 97845, bound 9000000)
+main error: Could not convert timestamp 89999045503 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 0, bound 9000000)
+main error: Could not convert timestamp 89999821360 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 90000420884 for FFmpeg
+main error: Timestamp conversion failed for 703100001: no reference clock
+main error: Could not convert timestamp 0 for FFmpeg
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+avcodec error: existing hardware acceleration cannot be reused
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+avcodec error: existing hardware acceleration cannot be reused
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+avcodec error: existing hardware acceleration cannot be reused
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+avcodec error: existing hardware acceleration cannot be reused
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+avcodec error: existing hardware acceleration cannot be reused
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: buffer deadlock prevented
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+avcodec error: existing hardware acceleration cannot be reused
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: buffer deadlock prevented
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+﻿-- logger module started --
+main: one instance mode ENABLED
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: Timestamp conversion failed for 14300001: no reference clock
+main error: Could not convert timestamp 0 for FFmpeg
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec error: Could not open C:\Users\Egor\Desktop\твоего балкона свет_data\e08\d08\e0808a2e.au: Invalid argument
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+main error: too low audio sample frequency (0)
+main error: failed to create audio output
+main error: module not functional
+main error: failed to create audio output
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+main error: too low audio sample frequency (0)
+main error: failed to create audio output
+main error: module not functional
+main error: failed to create audio output
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+main error: too low audio sample frequency (0)
+main error: failed to create audio output
+main error: module not functional
+main error: failed to create audio output
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+main error: too low audio sample frequency (0)
+main error: failed to create audio output
+main error: module not functional
+main error: failed to create audio output
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+main error: too low audio sample frequency (0)
+main error: failed to create audio output
+main error: module not functional
+main error: failed to create audio output
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+main error: too low audio sample frequency (0)
+main error: failed to create audio output
+main error: module not functional
+main error: failed to create audio output
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+main error: too low audio sample frequency (0)
+main error: failed to create audio output
+main error: module not functional
+main error: failed to create audio output
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: Timestamp conversion failed for 2080001: no reference clock
+main error: Could not convert timestamp 0 for FFmpeg
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+main error: too low audio sample frequency (0)
+main error: failed to create audio output
+main error: module not functional
+main error: failed to create audio output
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+main error: too low audio sample frequency (0)
+main error: failed to create audio output
+main error: module not functional
+main error: failed to create audio output
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+main error: too low audio sample frequency (0)
+main error: failed to create audio output
+main error: module not functional
+main error: failed to create audio output
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+main error: too low audio sample frequency (0)
+main error: failed to create audio output
+main error: module not functional
+main error: failed to create audio output
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+main error: too low audio sample frequency (0)
+main error: failed to create audio output
+main error: module not functional
+main error: failed to create audio output
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: Timestamp conversion failed (delay 1000000, buffering 0, bound 9000000)
+main error: Could not convert timestamp 111220757000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 111241910634 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 111242902970 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 111244118571 for FFmpeg
+main error: buffer deadlock prevented
+main error: buffer deadlock prevented
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avi error: no key frame set for track 0
+avi error: no key frame set for track 1
+avi error: no key frame set for track 0
+avi error: no key frame set for track 1
+avi error: no key frame set for track 0
+avi error: no key frame set for track 1
+main error: too low audio sample frequency (0)
+main error: failed to create audio output
+main error: module not functional
+main error: failed to create audio output
+avi error: no key frame set for track 0
+avi error: no key frame set for track 1
+main error: Timestamp conversion failed for 2320001: no reference clock
+main error: Could not convert timestamp 0 for FFmpeg
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+main error: too low audio sample frequency (0)
+main error: failed to create audio output
+main error: module not functional
+main error: failed to create audio output
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: Timestamp conversion failed for 22320001: no reference clock
+main error: Could not convert timestamp 0 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 832172000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 838810000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 837788000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 839882000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 845727000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 874106000 for FFmpeg
+main error: Timestamp conversion failed for 148520001: no reference clock
+main error: Could not convert timestamp 0 for FFmpeg
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 3000000)
+main error: Could not convert timestamp 21171381000 for faad
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21697669333 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21699781333 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21700879333 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21701540666 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21705537666 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21706822000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21710690666 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21711098666 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21712513333 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21713751666 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21716199000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21710502000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21721017333 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21712616333 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21713125333 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21716003666 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21732903666 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21734438666 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21744044333 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21744121666 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21746368000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21748588333 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21755821666 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21746341333 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21748408333 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21750586666 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21753157333 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21758243666 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21760935666 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21762764000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21765245333 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21766591000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21787708333 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21788848000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21790783333 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21791950000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21793681666 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21796116333 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21803393333 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21804968333 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21797028666 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21800766666 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21807495333 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21817807333 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21819297333 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21829926666 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21833776333 for FFmpeg
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21884187000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21886343000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21889529000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21891135000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21893532000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21895822000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21897371000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21898892000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21902034000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21904124000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21907553000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21909645000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21911404000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21913143000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21915662000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21917267000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21918929000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21912877000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21924837000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21915796000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21926725000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21917282000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21919295000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21921057000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21923371000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21924991000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21934252000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21949972000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21951033000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21952047000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21955870000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21957411000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21959958000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21962695000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21953150000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21963646000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21960449000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21962430000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21967079000 for FFmpeg
+main error: Timestamp conversion failed (delay 1000000, buffering 100000, bound 9000000)
+main error: Could not convert timestamp 21968996000 for FFmpeg
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+﻿-- logger module started --
+main: one instance mode ENABLED
+﻿-- logger module started --
+main: one instance mode ENABLED
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
+﻿-- logger module started --
+main: one instance mode ENABLED
+﻿-- logger module started --
+main: one instance mode ENABLED
+﻿-- logger module started --
+main: one instance mode ENABLED
+﻿-- logger module started --
+main: one instance mode ENABLED
+cache_read error: cannot pre fill buffer
+main: Запуск vlc с интерфейсом по умолчанию. Используйте 'cvlc' для запуска vlc без интерфейса.
+mjpeg error: cannot peek
+avcodec: Using D3D11VA (Intel(R) UHD Graphics, vendor 8086(Intel), device 9b41, revision 2) for hardware decoding
+direct3d11 error: SetThumbNailClip failed: 0x800706f4
+-- logger module stopped --
