@@ -1,7 +1,6 @@
 import re
-import os
-import pathlib
 from argparse import ArgumentParser
+from pathlib import Path
 from typing import List
 
 import cv2 as cv
@@ -9,44 +8,50 @@ import cv2 as cv
 # from linear_markup import LinearMarkup
 
 
-class LinearMarkup: # заглушка для класса, чтобы с sift'ом не возиться
-    def img_markup(self, i, j):
-        print("WORK")
+
+class LinearMarkup:  # заглушка для класса, чтобы с sift'ом не возиться
+    def __init__(self, signs_paths):
+        pass
+
+    def img_markup(self, query_image, i):
+        print('WORK')
 
 
 VIDEO_REGEX = re.compile(r'(\.mov)|(\.mp4)|(\.avi)$')
-IMAGE_REGEX = re.compile(r'(\.jpeg)|(\.jpg)|(\.png)$')
+IMAGE_REGEX = re.compile(r'(\.jpeg)|(\.jpg)|(\.png)|(\.PNG)$')
 
 
 arg_parser = ArgumentParser()
 arg_parser.add_argument(
     'input_path', type=str, nargs='?',
-    help='path to input data (path to folder, video)'
+    help='path to the input data (folder or video)'
 )
 arg_parser.add_argument(
-    '--output_path', type=str, default='linear_markup_results',
-    help='path to output data (if path does not exist, it will be created)'
+    '-o', '--output_path', type=str, default='linear_markup_results',
+    help='path to the output data (if path does not exist, it will be created)'
 )
 arg_parser.add_argument(
-    '--signs_path', type=str, default='sighs', help='path to signs images'
+    '-p', '--signs_path', type=str, default='signs', help='path to the signs images'
 )
-arg_parser.add_argument('--skip', type=int, default=24)
+arg_parser.add_argument('-s', '--skip', type=int, default=24)
 args = arg_parser.parse_args()
 
-input_path = pathlib.Path(os.path.abspath(args.input_path))
+input_path = Path(Path(args.input_path).absolute())
 if not input_path.exists():
-    raise Exception('input path does not exist')
+    raise Exception('Input path does not exist')
 
 if args.output_path is not None:
-    output_path = pathlib.Path(os.path.abspath(args.output_path))
+    output_path = Path(Path(args.output_path).absolute())
     if not output_path.exists():
         output_path.mkdir()
 
-videos_paths: List[pathlib.Path] = []
-images_paths: List[pathlib.Path] = []
+videos_paths: List[Path] = []
+images_paths: List[Path] = []
 
 if re.search(VIDEO_REGEX, input_path.name) and input_path.is_file():
     videos_paths.append(input_path)
+elif re.search(IMAGE_REGEX, input_path.name) and input_path.is_file():
+    images_paths.append(input_path)
 elif input_path.is_dir():
     for filepath in input_path.iterdir():
         if re.search(VIDEO_REGEX, filepath.name) is not None:
@@ -54,10 +59,10 @@ elif input_path.is_dir():
         elif re.search(IMAGE_REGEX, filepath.name) is not None:
             images_paths.append(filepath)
 else:
-    raise Exception('unexpected input data type')
+    raise Exception('Unexpected input data type')
 
 
-linear_markup = LinearMarkup()
+linear_markup = LinearMarkup(args.signs_path)
 video_capture = cv.VideoCapture()
 for video_path in videos_paths:
     frame_index = 0

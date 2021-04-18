@@ -1,7 +1,6 @@
-import glob
 import json
-import os
 import re
+from pathlib import Path
 
 import cv2 as cv
 import numpy as np
@@ -17,27 +16,22 @@ def custom_assert(item: object, Error=AssertionError, message='') -> None or Exc
 
 class LinearMarkup:
 
-    def __init__(self, output_folder_path='linear_markup_results', output_img_format='png'):
+    def __init__(self, signs_path: str, output_folder_path='linear_markup_results', output_img_format='png'):
         """
+        signs_path (string):
+            Absolute path to the output folder (signs).
         output_folder_path (string, optional):
-            Absolute path to the output folder (empty string by default).
+            Absolute path to the output folder ('linear_markup_results' by default).
         output_img_format (string, optional):
             Format in which images will be saved ('png' format by default).
         """
         self.output_folder_path = output_folder_path
         self.output_img_format = output_img_format
         self.markup_dict = {}
-        # self.standards = glob.glob(
-        #     os.path.join('standards', '*.png') and
-        #     os.path.join('standards', '*.PNG') and
-        #     os.path.join('standards', '*.jpg') and
-        #     os.path.join('standards', '*.jpeg')
-        # )
         self.standards = [
-            os.path.abspath(os.path.join(r'..\Savinov_Daniil\standards_resized', file))
-            for file in os.listdir(r'..\Savinov_Daniil\standards_resized')
-            if
-            re.search(r'[a-zA-Z0-9]*((\.png)|(\.PNG)|(\.jpg)|(\.jpeg))', file)
+            Path(filepath).absolute()
+            for filepath in Path(signs_path).iterdir()
+            if re.search(r'(\.jpeg)|(\.jpg)|(\.png)|(\.PNG)$', filepath)
         ]
         print(self.standards)
 
@@ -58,17 +52,16 @@ class LinearMarkup:
             custom_assert(res_img, NameError, 'No result image was returned')
             raise ProcessLookupError('Detector cannot detect the image')
         else:
-            # if markup['signs']:
-            if True:
+            if markup['signs']:
                 cv.imshow(img_file_name, res_img)
                 print(markup['signs'])
                 key = cv.waitKey(0)
-                if key == 50:  # "2" key -- append
+                if key == 50:  # "2" key -- append to the dataset
                     cv.imwrite(
-                        os.path.join(self.output_folder_path, 'images', img_file_name),
+                        Path(self.output_folder_path, 'images', img_file_name),
                         query_img
                     )
-                    with open(os.path.join(self.output_folder_path, 'markup.json'), 'w') as out_json:
+                    with open(Path(self.output_folder_path, 'markup.json'), 'w') as out_json:
                         self.markup_dict.update(
                             {
                                 img_file_name: markup
