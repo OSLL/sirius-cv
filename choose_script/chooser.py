@@ -5,16 +5,7 @@ from typing import List
 
 import cv2 as cv
 
-# from linear_markup import LinearMarkup
-
-
-
-class LinearMarkup:  # заглушка для класса, чтобы с sift'ом не возиться
-    def __init__(self, signs_paths):
-        pass
-
-    def img_markup(self, query_image, i):
-        print('WORK')
+from linear_markup import LinearMarkup
 
 
 VIDEO_REGEX = re.compile(r'(\.mov)|(\.mp4)|(\.avi)$')
@@ -31,17 +22,18 @@ arg_parser.add_argument(
     help='path to the output data (if path does not exist, it will be created)'
 )
 arg_parser.add_argument(
-    '-p', '--signs_path', type=str, default='signs', help='path to the signs images'
+    '-p', '--signs_path', type=str, default='signs',
+    help='path to the signs images'
 )
 arg_parser.add_argument('-s', '--skip', type=int, default=24)
 args = arg_parser.parse_args()
 
-input_path = Path(Path(args.input_path).absolute())
+input_path = Path(args.input_path).absolute()
 if not input_path.exists():
     raise Exception('Input path does not exist')
 
 if args.output_path is not None:
-    output_path = Path(Path(args.output_path).absolute())
+    output_path = Path(args.output_path).absolute()
     if not output_path.exists():
         output_path.mkdir()
 

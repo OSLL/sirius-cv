@@ -6,7 +6,6 @@ import numpy as np
 from modules.derivative_class import HomographyDetector
 
 
-
 class CustomDetector(HomographyDetector):
 
     def draw_bounding_boxes(self, cluster_pts_q: dict,

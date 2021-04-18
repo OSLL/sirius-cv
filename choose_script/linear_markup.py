@@ -8,7 +8,6 @@ import numpy as np
 from modules.derivative_class_upd import CustomDetector
 
 
-
 def custom_assert(item: object, Error=AssertionError, message='') -> None or Exception:
     if not item:
         raise Error(message)
@@ -31,9 +30,8 @@ class LinearMarkup:
         self.standards = [
             Path(filepath).absolute()
             for filepath in Path(signs_path).iterdir()
-            if re.search(r'(\.jpeg)|(\.jpg)|(\.png)|(\.PNG)$', filepath)
+            if re.search(r'(\.jpeg)|(\.jpg)|(\.png)|(\.PNG)$', str(filepath))
         ]
-        print(self.standards)
 
     def img_markup(self, query_img: np.ndarray, i: int) -> None:
         """
