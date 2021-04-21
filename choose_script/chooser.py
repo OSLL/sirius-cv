@@ -57,13 +57,13 @@ else:
 linear_markup = LinearMarkup(args.signs_path)
 video_capture = cv.VideoCapture()
 for video_path in videos_paths:
-    frame_index = 0
+    frame_index = 1
     video_capture.open(str(video_path.absolute()))
     length = int(video_capture.get(cv.CAP_PROP_FRAME_COUNT))
 
     while video_capture.isOpened():
         result, frame = video_capture.read()
-        if result:
+        if result and frame_index % args.skip == 0:
             linear_markup.img_markup(frame, frame_index)
         frame_index += 1
 
