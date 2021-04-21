@@ -51,12 +51,12 @@ class CustomDetector(HomographyDetector):
                 {
                     'type': sign_type,
                     'left_down': {
-                        'x': coord[i][0][0],
-                        'y': coord[i][0][1]
+                        'x': coord[0][0],
+                        'y': coord[0][1]
                     },
                     'right_up': {
-                        'x': coord[i][1][0],
-                        'y': coord[i][1][1]
+                        'x': coord[1][0],
+                        'y': coord[1][1]
                     }
                 }
             )

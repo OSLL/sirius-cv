@@ -24,7 +24,11 @@ class LinearMarkup:
         output_img_format (string, optional):
             Format in which images will be saved ('png' format by default).
         """
-        self.output_folder_path = output_folder_path
+        self.output_folder_path = Path(output_folder_path)
+        self.output_images_folder_path = Path(self.output_folder_path, 'images')
+        if not self.output_images_folder_path.exists():
+            self.output_images_folder_path.mkdir()
+
         self.output_img_format = output_img_format
         self.markup_dict = {}
         self.standards = [
@@ -52,14 +56,13 @@ class LinearMarkup:
         else:
             if markup['signs']:
                 cv.imshow(img_file_name, res_img)
-                print(markup['signs'])
                 key = cv.waitKey(0)
                 if key == 50:  # "2" key -- append to the dataset
                     cv.imwrite(
-                        Path(self.output_folder_path, 'images', img_file_name),
+                        str(self.output_images_folder_path / img_file_name),
                         query_img
                     )
-                    with open(Path(self.output_folder_path, 'markup.json'), 'w') as out_json:
+                    with open(self.output_folder_path / 'markup.json', 'w') as out_json:
                         self.markup_dict.update(
                             {
                                 img_file_name: markup
