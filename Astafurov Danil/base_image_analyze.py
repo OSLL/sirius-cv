@@ -13,3 +13,4 @@ class BaseImageAnalyze:
                      method=cv2.NORM_HAMMING, crossCheck=True, depth=10,
                      flags=2):
         pass
+
