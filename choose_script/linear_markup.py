@@ -1,11 +1,13 @@
 import json
 import re
+from datetime import datetime
 from pathlib import Path
 
 import cv2 as cv
 import numpy as np
 
 from modules.derivative_class_upd import CustomDetector
+
 
 
 def custom_assert(item: object, Error=AssertionError, message='') -> None or Exception:
@@ -47,14 +49,15 @@ class LinearMarkup:
         res_img, markup = None, None
         custom_assert(self.standards, FileExistsError, 'No standard images were found')
         detector = CustomDetector(self.standards)
-        img_file_name = f'img_{i + 1}.{self.output_img_format}'
+        cur_time = '-'.join(re.split(r'[ :.]', str(datetime.now())))
+        img_file_name = f'img-{i + 1}__{cur_time}.{self.output_img_format}'
         try:
             res_img, markup = detector.detect_image(query_img)
         except Exception:
             custom_assert(res_img, NameError, 'No result image was returned')
             raise ProcessLookupError('Detector cannot detect the image')
         else:
-            if markup['signs']:
+            if markup['regions']:
                 cv.imshow(img_file_name, res_img)
                 key = cv.waitKey(0)
                 if key == 50:  # "2" key -- append to the dataset
@@ -63,6 +66,7 @@ class LinearMarkup:
                         query_img
                     )
                     with open(self.output_folder_path / 'markup.json', 'w') as out_json:
+                        markup['filename'] = img_file_name
                         self.markup_dict.update(
                             {
                                 img_file_name: markup

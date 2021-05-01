@@ -1,9 +1,12 @@
+from collections import Counter
+from math import prod
 from typing import Tuple
 
 import cv2 as cv
 import numpy as np
 
 from modules.derivative_class import HomographyDetector
+
 
 
 class CustomDetector(HomographyDetector):
@@ -20,6 +23,8 @@ class CustomDetector(HomographyDetector):
             size = int(max(max_x - min_x, max_y - min_y))
             self.res_coords.append([
                 (cnt_x - size, cnt_y - size),
+                (cnt_x + size, cnt_y - size),
+                (cnt_x - size, cnt_y + size),
                 (cnt_x + size, cnt_y + size)
             ])
             query_img = cv.rectangle(query_img, (cnt_x - size, cnt_y - size), (cnt_x + size, cnt_y + size), 255, 3,
@@ -44,19 +49,30 @@ class CustomDetector(HomographyDetector):
                 self.detected_signs_types.append(sign_name)
 
         markup = {
-            'signs': []
+            'fileref': '',
+            'size': prod(self.query_img.shape[:2]),
+            'filename': '',
+            'base64_img_data': '',
+            'file_attributes': {},
+            'regions': {}
         }
+
+        equal_signs_counter = Counter(self.detected_signs_types)
         for i, (sign_type, coord) in enumerate(zip(self.detected_signs_types, self.res_coords)):
-            markup['signs'].append(
+            if equal_signs_counter[sign_type] == 1:
+                name = sign_type
+            else:
+                name = f'{sign_type}-{i}'
+            #   TODO: serial number of equal sign's types
+            markup['regions'].update(
                 {
-                    'type': sign_type,
-                    'left_down': {
-                        'x': coord[0][0],
-                        'y': coord[0][1]
-                    },
-                    'right_up': {
-                        'x': coord[1][0],
-                        'y': coord[1][1]
+                    name: {
+                        'shape_attributes': {
+                            'name': 'polygon',
+                            'all_points_x': [x for x, y in coord],
+                            'all_points_y': [y for x, y in coord]
+                        },
+                        'region_attributes': {}
                     }
                 }
             )
