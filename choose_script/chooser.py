@@ -8,11 +8,11 @@ import cv2 as cv
 from linear_markup import LinearMarkup
 
 
+
 VIDEO_REGEX = re.compile(r'(\.mov)|(\.mp4)|(\.avi)$')
 IMAGE_REGEX = re.compile(r'(\.jpeg)|(\.jpg)|(\.png)|(\.PNG)$')
 
-
-arg_parser = ArgumentParser()
+arg_parser = ArgumentParser('Linear markup script')
 arg_parser.add_argument(
     'input_path', type=str, nargs='?',
     help='path to the input data (folder or video)'
@@ -25,7 +25,10 @@ arg_parser.add_argument(
     '-p', '--signs_path', type=str, default='signs',
     help='path to the signs images'
 )
-arg_parser.add_argument('-s', '--skip', type=int, default=24)
+arg_parser.add_argument(
+    '-s', '--skip', type=int, default=24,
+    help='how many frames will be skipped in the video per each iteration'
+)
 args = arg_parser.parse_args()
 
 input_path = Path(args.input_path).absolute()
@@ -52,7 +55,6 @@ elif input_path.is_dir():
             images_paths.append(filepath)
 else:
     raise Exception('Unexpected input data type')
-
 
 linear_markup = LinearMarkup(args.signs_path)
 video_capture = cv.VideoCapture()
