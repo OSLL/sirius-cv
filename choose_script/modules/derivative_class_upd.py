@@ -1,4 +1,3 @@
-from collections import Counter
 from math import prod
 from typing import Tuple
 
@@ -8,11 +7,14 @@ import numpy as np
 from modules.derivative_class import HomographyDetector
 
 
-
 class CustomDetector(HomographyDetector):
 
-    def draw_bounding_boxes(self, cluster_pts_q: dict,
-                            query_img: np.ndarray, sign_name: str) -> Tuple[np.ndarray, list]:
+    def __init__(self, standards_paths: list):
+        super().__init__(standards_paths)
+        self.res_coords = []
+        self.detected_signs_types = []
+
+    def draw_bounding_boxes(self, cluster_pts_q: dict, query_img: np.ndarray, sign_name: str) -> Tuple[np.ndarray]:
         for pts in cluster_pts_q.values():
             pts.sort(key=lambda x: x[0])
             min_x, max_x = pts[0][0], pts[-1][0]
@@ -35,8 +37,8 @@ class CustomDetector(HomographyDetector):
         return query_img
 
     def detect_image(self, query_img: np.ndarray) -> Tuple[np.ndarray, dict]:
-        self.res_coords = []
-        self.detected_signs_types = []
+        self.res_coords.clear()
+        self.detected_signs_types.clear()
         prev_res_coords_len = 0
         for sign_name in self.standard_signs:
             train_img = self.standard_signs[sign_name]
@@ -60,13 +62,10 @@ class CustomDetector(HomographyDetector):
             'regions': {}
         }
 
-        equal_signs_counter = Counter(self.detected_signs_types)
-        for i, (sign_type, coord) in enumerate(zip(self.detected_signs_types, self.res_coords)):
-            if equal_signs_counter[sign_type] == 1:
-                name = sign_type
-            else:
-                name = f'{sign_type}-{i}'
-            #   TODO: serial number of equal sign's types
+        signs_types_count = {sign_type: 1 for sign_type in self.detected_signs_types}
+        for sign_type, coord in zip(self.detected_signs_types, self.res_coords):
+            name = f'{sign_type}-{signs_types_count[sign_type]}'
+            signs_types_count[sign_type] += 1
             markup['regions'].update(
                 {
                     name: {

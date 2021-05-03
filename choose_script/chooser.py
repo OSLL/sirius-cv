@@ -8,7 +8,6 @@ import cv2 as cv
 from linear_markup import LinearMarkup
 
 
-
 VIDEO_REGEX = re.compile(r'(\.mov)|(\.mp4)|(\.avi)$')
 IMAGE_REGEX = re.compile(r'(\.jpeg)|(\.jpg)|(\.png)|(\.PNG)$')
 
