@@ -37,6 +37,7 @@ class CustomDetector(HomographyDetector):
     def detect_image(self, query_img: np.ndarray) -> Tuple[np.ndarray, dict]:
         self.res_coords = []
         self.detected_signs_types = []
+        prev_res_coords_len = 0
         for sign_name in self.standard_signs:
             train_img = self.standard_signs[sign_name]
 
@@ -46,11 +47,13 @@ class CustomDetector(HomographyDetector):
             if len(good_matches):
                 cluster_pts_q, cluster_pts_t = self.cluster_pts(good_matches, query_kps, train_kps)
                 query_img = self.draw_bounding_boxes(cluster_pts_q, query_img, sign_name)
-                self.detected_signs_types.append(sign_name)
+                if prev_res_coords_len + 1 == len(self.res_coords):
+                    self.detected_signs_types.append(sign_name)
+                    prev_res_coords_len += 1
 
         markup = {
             'fileref': '',
-            'size': prod(self.query_img.shape[:2]),
+            'size': prod(query_img.shape[:2]),
             'filename': '',
             'base64_img_data': '',
             'file_attributes': {},

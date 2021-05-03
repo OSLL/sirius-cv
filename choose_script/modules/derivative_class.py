@@ -18,7 +18,8 @@ class HomographyDetector(DetectingPattern):
             standard_path_name = Path(standard_path).name.split('.')[0]
             self.standard_signs[standard_path_name] = cv.imread(str(standard_path))
 
-    def add_kps(self, query_img: np.ndarray, train_img: np.ndarray) -> Tuple[list, np.ndarray, list, np.ndarray]:
+    def add_kps(self, query_img: np.ndarray,
+                train_img: np.ndarray) -> Tuple[list, np.ndarray, list, np.ndarray]:
         sift = cv.SIFT_create()
 
         query_kps, query_des = sift.detectAndCompute(query_img, None)
@@ -26,7 +27,8 @@ class HomographyDetector(DetectingPattern):
 
         return query_kps, query_des, train_kps, train_des
 
-    def match_kps(self, query_des: np.ndarray, train_des: np.ndarray, train_img, query_kps, train_kps) -> np.ndarray:
+    def match_kps(self, query_des: np.ndarray, train_des: np.ndarray,
+                  train_img: np.ndarray, query_kps: list, train_kps: list) -> np.ndarray:
         index_params = dict(algorithm=1, trees=5)
         search_params = dict(checks=50)
         flann = cv.FlannBasedMatcher(index_params, search_params)
@@ -47,11 +49,10 @@ class HomographyDetector(DetectingPattern):
         # matched_img = cv.drawMatchesKnn(self.query_img, query_kps, train_img, train_kps, matches, None, **draw_params)
         # cv.imshow('', matched_img)
         # cv.waitKey(0)
-
         return good_matches
 
-    def cluster_pts(self, good_matches: np.ndarray, query_kps: list,
-                    train_kps: list) -> Tuple[dict, dict]:
+    def cluster_pts(self, good_matches: np.ndarray,
+                    query_kps: list, train_kps: list) -> Tuple[dict, dict]:
         ptQuery_ptTrain = {}
         for DMatch in good_matches:
             pt_q = query_kps[DMatch.queryIdx].pt
@@ -77,8 +78,8 @@ class HomographyDetector(DetectingPattern):
 
         return cluster_pts_q, cluster_pts_t
 
-    def homography_clusters(self, cluster_pts_q: dict, cluster_pts_t: dict, query_img: np.ndarray,
-                            train_img: np.ndarray, sign_name: str) -> np.ndarray:
+    def homography_clusters(self, cluster_pts_q: dict, cluster_pts_t: dict,
+                            query_img: np.ndarray, train_img: np.ndarray, sign_name: str) -> np.ndarray:
         res_img = query_img
         
         for cluster in cluster_pts_q:
@@ -140,16 +141,14 @@ class HomographyDetector(DetectingPattern):
 
 
 if __name__ == '__main__':
-    import glob
-    import os
+    query_img = cv.imread('/Users/savinovddgmail.com/PycharmProjects/road-signs-detector/query_images/query_4.jpg')
+    train_img = cv.imread('/Users/savinovddgmail.com/PycharmProjects/road-signs-detector/train_images/30-speed-limit.jpg')
+    standards = ['/Users/savinovddgmail.com/PycharmProjects/road-signs-detector/train_images/30-speed-limit.jpg']
 
-    # input_video_path, output_video_path = r'videos\2-cut.mp4', 'result-of-2-cut.mp4'
-
-    standards = glob.glob(os.path.join('../standards_resized', '*.PNG'))
-    standards.append('train_images/30-speed-limit.jpg')
-    detector = HomographyDetector(standards)
-
-    query_img = cv.imread('../query_images/query_4.jpg')
-    res_img = detector.detect_on_image(query_img)
-    cv.imshow('result', res_img)
-    cv.waitKey(0)
+    Detector = HomographyDetector(standards)
+    query_kps, query_des, train_kps, train_des = Detector.add_kps(query_img, train_img)
+    good_matches = Detector.match_kps(query_des, train_des, train_img, query_kps, train_kps)
+    print(good_matches, '\n\n\n\n\n')
+    cluster_pts_q, cluster_pts_t = Detector.cluster_pts(good_matches, query_kps, train_kps)
+    print(cluster_pts_q, '\n\n\n')
+    print(cluster_pts_t)
