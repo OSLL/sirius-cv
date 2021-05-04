@@ -1,77 +1,77 @@
-import json
 import re
-from datetime import datetime
+from argparse import ArgumentParser
 from pathlib import Path
+from typing import List
 
 import cv2 as cv
-import numpy as np
 
-from modules.derivative_class_upd import CustomDetector
+from linear_markup_helper import LinearMarkup
 
 
-class LinearMarkup:
+VIDEO_REGEX = re.compile(r'(\.avi)|(\.mp4)|(\.mov)|(\.MOV)$')
+IMAGE_REGEX = re.compile(r'(\.jpeg)|(\.jpg)|(\.png)|(\.PNG)$')
 
-    def __init__(self, signs_path: str, output_folder_path='linear_markup_results', output_img_format='png'):
-        """
-        signs_path (string):
-            Absolute path to the output folder (signs).
-        output_folder_path (string, optional):
-            Absolute path to the output folder ('linear_markup_results' by default).
-        output_img_format (string, optional):
-            Format in which images will be saved ('png' format by default).
-        """
-        self.output_folder_path = Path(output_folder_path)
-        self.output_images_folder_path = self.output_folder_path/'images'
-        if not self.output_images_folder_path.exists():
-            self.output_images_folder_path.mkdir()
+arg_parser = ArgumentParser('Linear markup script')
+arg_parser.add_argument(
+    'input_path', type=str, nargs='?',
+    help='path to the input data (folder or video)'
+)
+arg_parser.add_argument(
+    '-p', '--signs_path', type=str, default='signs',
+    help='path to the signs images'
+)
+arg_parser.add_argument(
+    '-o', '--output_path', type=str, default='linear_markup_results',
+    help='path to the output data (if path does not exist, it will be created)'
+)
+arg_parser.add_argument(
+    '-s', '--skip', type=int, default=24,
+    help='how many frames will be skipped in the video per each iteration'
+)
+args = arg_parser.parse_args()
 
-        self.output_img_format = output_img_format
-        self.markup_dict = {}
-        self.standards = [
-            Path(filepath).absolute() for filepath in Path(signs_path).iterdir()
-            if re.search(r'(\.jpeg)|(\.jpg)|(\.png)|(\.PNG)$', str(filepath))
-        ]
-        if not self.standards:
-            raise FileExistsError('No standard images were found')
+input_path = Path(args.input_path).absolute()
+if not input_path.exists():
+    raise Exception('Input path does not exist')
 
-        self.detector = CustomDetector(self.standards)
+if args.output_path is not None:
+    output_path = Path(args.output_path).absolute()
+    if not output_path.exists():
+        output_path.mkdir()
 
-    def img_markup(self, query_img: np.ndarray, i: int) -> None:
-        """
-        Append useful images and its markup to dataset, and print the log.
-        Args:
-            query_img (numpy.ndarray): Read image.
-            i (integer): Index of current iteration loop.
-        """
+videos_paths: List[Path] = []
+images_paths: List[Path] = []
 
-        image_to_save = query_img.copy()
+if re.search(VIDEO_REGEX, input_path.name) and input_path.is_file():
+    videos_paths.append(input_path)
+elif re.search(IMAGE_REGEX, input_path.name) and input_path.is_file():
+    images_paths.append(input_path)
+elif input_path.is_dir():
+    for filepath in input_path.iterdir():
+        if re.search(VIDEO_REGEX, filepath.name) is not None:
+            videos_paths.append(filepath)
+        elif re.search(IMAGE_REGEX, filepath.name) is not None:
+            images_paths.append(filepath)
+else:
+    raise Exception('Unexpected input data type')
 
-        res_img, markup = None, None
-        cur_time = '-'.join(re.split(r'[ :.]', str(datetime.now())))
-        img_file_name = f'img-{i + 1}__{cur_time}.{self.output_img_format}'
-        try:
-            res_img, markup = self.detector.detect_image(query_img)
-        except Exception:
-            if not res_img:
-                raise NameError('No result image was returned')
-            raise ProcessLookupError('Detector cannot detect the image')
-        else:
-            if markup['regions']:
-                cv.imshow(img_file_name, res_img)
-                key = cv.waitKey(0)
-                if key == 50:  # "2" key -- append to the dataset
-                    cv.imwrite(
-                        str(self.output_images_folder_path/img_file_name), image_to_save
-                    )
-                    with open(self.output_folder_path/'markup.json', 'w') as out_json:
-                        markup['filename'] = img_file_name
-                        self.markup_dict.update(
-                            {img_file_name: markup}
-                        )
-                        json.dump(self.markup_dict, out_json, indent=4)
-                    print(f'Image {img_file_name} (#{i + 1}) and markup were successfully writen')  # "2" key
-                cv.destroyAllWindows()
-                print(f'Image {img_file_name} (#{i + 1}) was skipped')  # "1" key
-            print(f'In the image {img_file_name} (#{i + 1}) were no signs detected')  # no signs
-        finally:
-            print(f'End processing #{i + 1}: {img_file_name}')
+linear_markup = LinearMarkup(args.signs_path)
+video_capture = cv.VideoCapture()
+for video_path in videos_paths:
+    frame_index = 1
+    video_capture.open(str(video_path.absolute()))
+    length = int(video_capture.get(cv.CAP_PROP_FRAME_COUNT))
+
+    while video_capture.isOpened():
+        result, frame = video_capture.read()
+        if result and frame_index % args.skip == 0:
+            linear_markup.img_markup(frame, frame_index)
+        frame_index += 1
+
+    video_capture.release()
+
+image_index = 0
+for image_path in images_paths:
+    image = cv.imread(str(image_path.absolute()))
+    linear_markup.img_markup(image, image_index)
+    image_index += 1
