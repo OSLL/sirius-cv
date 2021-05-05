@@ -3,6 +3,7 @@ class RoadSignDetectorPattern:
     self.test_img = []
     self.query_img = None
     self.draw_kps = draw_kps
+    self.processed_image = None
 
   def detect(self):
     pass
