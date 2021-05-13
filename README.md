@@ -52,6 +52,32 @@
 ```Shell
 python linear_markup.py "road_trip.mp4" -p "USA_road_signs" -o "my_results" -s 60
 ```
+### Критерии отбора
+<details>
+  <summary>Развернуть</summary>
+<br>
+
+#### ***Плохие изображения***:
+<br>
+##### Знак размечен не полностью (*светофор*), вокруг знака размечено слишком много свободного пространства (*развилка*), тип знак размечен неверно (*развилка*):
+![](./docs/bad_markup_results/1.png)
+##### Знак размечен не полностью (*светофор*):
+![](./docs/bad_markup_results/2.png)
+##### Вокруг знака размечено слишком много свободного пространства (*светофор*):
+![](./docs/bad_markup_results/3.png)
+##### Разметка знака залезла на другой знак (*развилка* на *стоп*):
+![](./docs/bad_markup_results/4.png)
+<br>
+
+#### ***Хорошие изображения***:
+<br>
+![](./docs/good_markup_results/1.png)
+![](./docs/good_markup_results/2.png)
+![](./docs/good_markup_results/3.png)
+![](./docs/good_markup_results/4.png)
+![](./docs/good_markup_results/5.png)
+</details>
+
 
 ## Приобретенный опыт
 
