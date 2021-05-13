@@ -38,7 +38,7 @@ class HomographyDetector(DetectingPattern):
         good_matches = []
         for i, (m, n) in enumerate(matches):
             # For Duckietown's test was: if m.distance < .8 * n.distance:
-            if m.distance < .6 * n.distance:
+            if m.distance < .65 * n.distance:
                 matchesMask[i] = [1, 0]
                 good_matches.append(m)
         good_matches = np.asarray(good_matches)
@@ -59,7 +59,7 @@ class HomographyDetector(DetectingPattern):
             pt_t = train_kps[DMatch.trainIdx].pt
             ptQuery_ptTrain[pt_q] = pt_t
 
-        clusterized = DBSCAN(eps=20, min_samples=7).fit_predict(list(ptQuery_ptTrain.keys()))
+        clusterized = DBSCAN(eps=50, min_samples=3).fit_predict(list(ptQuery_ptTrain.keys()))
 
         cluster_pts_q = {}
         for gp, pt in zip(clusterized, list(ptQuery_ptTrain.keys())):

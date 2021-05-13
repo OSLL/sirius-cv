@@ -28,6 +28,10 @@ arg_parser.add_argument(
     '-s', '--skip', type=int, default=24,
     help='how many frames will be skipped in the video per each iteration'
 )
+arg_parser.add_argument(
+    '-ss', '--skip_start', type=int, default=0,
+    help='how many frames will be skipped in the video per each iteration'
+)
 args = arg_parser.parse_args()
 
 input_path = Path(args.input_path).absolute()
@@ -64,8 +68,15 @@ for video_path in videos_paths:
 
     while video_capture.isOpened():
         result, frame = video_capture.read()
-        if result and frame_index % args.skip == 0:
-            linear_markup.img_markup(frame, frame_index)
+        if result and frame_index % args.skip == 0 and frame_index > args.skip_start:
+            scale_percent = 200  # percent of original size
+            width = int(frame.shape[1] * scale_percent / 100)
+            height = int(frame.shape[0] * scale_percent / 100)
+            dim = (width, height)
+
+            # resize image
+            resized = cv.resize(frame, dim, interpolation=cv.INTER_NEAREST)
+            linear_markup.img_markup(resized, frame_index)
         frame_index += 1
 
     video_capture.release()
