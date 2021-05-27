@@ -26,8 +26,8 @@ class CustomDetector(HomographyDetector):
             self.res_coords.append([
                 (cnt_x - size, cnt_y - size),
                 (cnt_x + size, cnt_y - size),
-                (cnt_x - size, cnt_y + size),
-                (cnt_x + size, cnt_y + size)
+                (cnt_x + size, cnt_y + size),
+                (cnt_x - size, cnt_y + size)
             ])
             query_img = cv.rectangle(query_img, (cnt_x - size, cnt_y - size), (cnt_x + size, cnt_y + size), 255, 3,
                                      cv.LINE_AA)
