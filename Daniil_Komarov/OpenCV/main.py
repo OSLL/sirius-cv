@@ -4,6 +4,7 @@ import os
 import argparse
 import warnings
 import json
+import pickle
 
 class OpenCV_Solution():
     def _pass_func(self, *args, **kwargs): pass
@@ -95,7 +96,10 @@ class OpenCV_Solution():
             try:
                 if(create_markup):
                     out, processed, markup = self._process_frame(frame, create_markup=True)
-                    output_frames.append([out, processed, markup])
+                    if(cut_empty and markup):
+                        output_frames.append([out, processed, markup])
+                    if(not cut_empty):
+                        output_frames.append([out, processed, markup])
                 else:
                     out, processed = self._process_frame(frame)
                     output_frames.append([out, processed])
@@ -103,12 +107,7 @@ class OpenCV_Solution():
                 current_frame += 1
             except cv2.error:
                 break
-        output = []
-        if(cut_empty):
-            for frame in output_frames:
-                if(frame[2]): output.append(frame)
-        else: output = output_frames
-        return output
+        return output_frames
 
     def detect_image(self, image):
         out, processed, markup = self._process_frame(image, create_markup=True)
@@ -127,20 +126,30 @@ class OpenCV_Solution():
             json_markup['signs'].append(sign_descr)
         return out, processed, json.dumps(json_markup)
 
-    def linear_markup(self, input_path):
+    def linear_markup(self, input_path, output_file):
         output_frames = []
+        batch_video = False
         if(os.path.isfile(input_path)):
             output_frames = self._process_video(input_path, create_markup=True)
         else:
-            for file in os.listdir(input_path):
+            for file_num, file in enumerate(os.listdir(input_path)):
                 if(os.path.splitext(file)[1].lower() in ['.jpg', '.jpeg', '.png']):
                     frame = cv2.imread(os.path.join(input_path, file))
                     out, processed, markup = self._process_frame(frame, create_markup=True)
                     output_frames.append([out, processed, markup])
                 if(os.path.splitext(file)[1].lower() in ['.mp4']):
-                    for out, processed, markup in self._process_video(os.path.join(input_path, file), create_markup=True):
-                        output_frames.append([out, processed, markup])
-        return output_frames
+                    batch_video = True
+                    
+                    os.makedirs(output_file, exist_ok=True)
+
+                    result = self._process_video(os.path.join(input_path, file), create_markup=True)
+                    with open(os.path.join(output_file+"/", str(file_num)+".pkl"), "wb") as file:
+                        pickle.dump(result, file, pickle.HIGHEST_PROTOCOL)
+
+                    del result
+        if(not batch_video):
+            with open(output_file+".pkl", "wb") as file:
+                pickle.dump(output_frames, file, pickle.HIGHEST_PROTOCOL)
 
     def doUserSelect(self, frames, output_directory, startNumeration=0):
         output_markup = {}

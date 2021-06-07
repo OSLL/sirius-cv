@@ -17,9 +17,7 @@ solution.defineSign(("STOP", "stop.png"))
 solution.defineSign(("T-INTERSECT", "t-intersection.png"))
 
 if(args.action == "render"):
-    out = solution.linear_markup(args.input)
-    with open(args.output+".pkl", "wb") as file:
-        pickle.dump(out, file, pickle.HIGHEST_PROTOCOL)
+    solution.linear_markup(args.input, args.output)
 
 elif(args.action == "select"):
     with open(args.input, "rb") as file:
