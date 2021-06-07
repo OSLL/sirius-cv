@@ -144,7 +144,8 @@ class OpenCV_Solution():
 
     def doUserSelect(self, frames, output_directory, startNumeration=0):
         output_markup = {}
-        for frame in frames:
+        save_and_stop = False
+        for i, frame in enumerate(frames):
             frame_markup = {"signs": []}
             cv2.imshow("output", frame[1])
             while(True):
@@ -169,7 +170,13 @@ class OpenCV_Solution():
                     output_markup[str(startNumeration)+".png"] = frame_markup
                     startNumeration += 1
                     break
-        return output_markup
+                if(key_code == ord('3')):
+                    save_and_stop = True
+                    break
+            if(save_and_stop):
+                output_markup.update({"startNumeration": startNumeration})
+                return True, frames[i:], output_markup
+        return False, output_markup
 
     def init(self, draw_kps=False):
         warnings.warn = self._pass_func
