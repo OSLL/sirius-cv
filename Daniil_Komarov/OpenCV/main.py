@@ -75,11 +75,11 @@ class OpenCV_Solution():
         return args, args_ok, framerate, output_file_name
 
     def _process_frame(self, frame, create_markup=False):
-        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        #frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         self.rsd.changeQueryImage(frame)
         if(create_markup): out, processed, markup = self.rsd.run(create_markup=True)
         else: out, processed = self.rsd.run()
-        out = (out[:,:,None].astype(frame.dtype))
+        #out = (out[:,:,None].astype(frame.dtype))
         if(create_markup): return out, processed, markup
         else: return out, processed
 
@@ -128,24 +128,21 @@ class OpenCV_Solution():
         return out, processed, json.dumps(json_markup)
 
     def linear_markup(self, input_path):
-        if(type(input_path) == type(str)): return "ERROR"
+        output_frames = []
+        if(os.path.isfile(input_path)):
+            output_frames = self._process_video(input_path, create_markup=True)
         else:
-            output_frames = []
-            if(os.path.isfile(input_path)):
-                output_frames = self._process_video(input_path, create_markup=True)
-            else:
-                for file in os.listdir(input_path):
-                    if(os.path.splitext(file)[1].lower() in ['.jpg', '.jpeg', '.png']):
-                        frame = cv2.imread(os.path.join(input_path, file))
-                        out, processed, markup = self._process_frame(frame, create_markup=True)
+            for file in os.listdir(input_path):
+                if(os.path.splitext(file)[1].lower() in ['.jpg', '.jpeg', '.png']):
+                    frame = cv2.imread(os.path.join(input_path, file))
+                    out, processed, markup = self._process_frame(frame, create_markup=True)
+                    output_frames.append([out, processed, markup])
+                if(os.path.splitext(file)[1].lower() in ['.mp4']):
+                    for out, processed, markup in self._process_video(os.path.join(input_path, file), create_markup=True):
                         output_frames.append([out, processed, markup])
-                    if(os.path.splitext(file)[1].lower() in ['.mp4']):
-                        for out, processed, markup in self._process_video(os.path.join(input_path, file), create_markup=True):
-                            output_frames.append([out, processed, markup])
         return output_frames
 
     def doUserSelect(self, frames, output_directory, startNumeration=0):
-        os.makedirs(output_directory, exist_ok=True)
         output_markup = {}
         for frame in frames:
             frame_markup = {"signs": []}

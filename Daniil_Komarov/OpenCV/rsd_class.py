@@ -13,6 +13,8 @@ class RoadSignDetector(RoadSignDetectorPattern):
 	def detect(self, train_img):
 		sift = cv2.SIFT_create()
 		test_kps, test_des = sift.detectAndCompute(train_img, None)
+		query_img_bw = copy.copy(self.query_img)
+		query_img_bw = cv2.cvtColor(query_img_bw, cv2.COLOR_BGR2GRAY)
 		query_kps, query_des = sift.detectAndCompute(self.query_img, None)
 		return test_kps, test_des, query_kps, query_des
 
