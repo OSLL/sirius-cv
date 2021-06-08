@@ -1,0 +1,209 @@
+{
+    "img-1273__2021-06-08-13-47-03-843367.png": {
+        "fileref": "",
+        "size": 1228800,
+        "filename": "img-1273__2021-06-08-13-47-03-843367.png",
+        "base64_img_data": "",
+        "file_attributes": {},
+        "regions": {
+            "stop-1": {
+                "shape_attributes": {
+                    "name": "polygon",
+                    "all_points_x": [
+                        744,
+                        810,
+                        810,
+                        744
+                    ],
+                    "all_points_y": [
+                        196,
+                        196,
+                        262,
+                        262
+                    ]
+                },
+                "region_attributes": {}
+            }
+        }
+    },
+    "img-1681__2021-06-08-13-48-03-818471.png": {
+        "fileref": "",
+        "size": 1228800,
+        "filename": "img-1681__2021-06-08-13-48-03-818471.png",
+        "base64_img_data": "",
+        "file_attributes": {},
+        "regions": {
+            "traffic_light-1": {
+                "shape_attributes": {
+                    "name": "polygon",
+                    "all_points_x": [
+                        681,
+                        835,
+                        835,
+                        681
+                    ],
+                    "all_points_y": [
+                        99,
+                        99,
+                        253,
+                        253
+                    ]
+                },
+                "region_attributes": {}
+            }
+        }
+    },
+    "img-3217__2021-06-08-13-51-16-422741.png": {
+        "fileref": "",
+        "size": 1228800,
+        "filename": "img-3217__2021-06-08-13-51-16-422741.png",
+        "base64_img_data": "",
+        "file_attributes": {},
+        "regions": {
+            "left-T-intersect-1": {
+                "shape_attributes": {
+                    "name": "polygon",
+                    "all_points_x": [
+                        480,
+                        534,
+                        534,
+                        480
+                    ],
+                    "all_points_y": [
+                        205,
+                        205,
+                        259,
+                        259
+                    ]
+                },
+                "region_attributes": {}
+            }
+        }
+    },
+    "img-4849__2021-06-08-16-08-39-955166.png": {
+        "fileref": "",
+        "size": 1228800,
+        "filename": "img-4849__2021-06-08-16-08-39-955166.png",
+        "base64_img_data": "",
+        "file_attributes": {},
+        "regions": {
+            "traffic_light-1": {
+                "shape_attributes": {
+                    "name": "polygon",
+                    "all_points_x": [
+                        569,
+                        619,
+                        619,
+                        569
+                    ],
+                    "all_points_y": [
+                        217,
+                        217,
+                        267,
+                        267
+                    ]
+                },
+                "region_attributes": {}
+            }
+        }
+    },
+    "img-4921__2021-06-08-16-08-54-026758.png": {
+        "fileref": "",
+        "size": 1228800,
+        "filename": "img-4921__2021-06-08-16-08-54-026758.png",
+        "base64_img_data": "",
+        "file_attributes": {},
+        "regions": {
+            "left-T-intersect-1": {
+                "shape_attributes": {
+                    "name": "polygon",
+                    "all_points_x": [
+                        478,
+                        514,
+                        514,
+                        478
+                    ],
+                    "all_points_y": [
+                        204,
+                        204,
+                        240,
+                        240
+                    ]
+                },
+                "region_attributes": {}
+            },
+            "traffic_light-1": {
+                "shape_attributes": {
+                    "name": "polygon",
+                    "all_points_x": [
+                        751,
+                        813,
+                        813,
+                        751
+                    ],
+                    "all_points_y": [
+                        201,
+                        201,
+                        263,
+                        263
+                    ]
+                },
+                "region_attributes": {}
+            }
+        }
+    },
+    "img-5425__2021-06-08-16-09-54-185063.png": {
+        "fileref": "",
+        "size": 1228800,
+        "filename": "img-5425__2021-06-08-16-09-54-185063.png",
+        "base64_img_data": "",
+        "file_attributes": {},
+        "regions": {
+            "no-way-left-1": {
+                "shape_attributes": {
+                    "name": "polygon",
+                    "all_points_x": [
+                        813,
+                        851,
+                        851,
+                        813
+                    ],
+                    "all_points_y": [
+                        212,
+                        212,
+                        250,
+                        250
+                    ]
+                },
+                "region_attributes": {}
+            }
+        }
+    },
+    "img-7873__2021-06-08-16-42-24-284572.png": {
+        "fileref": "",
+        "size": 1228800,
+        "filename": "img-7873__2021-06-08-16-42-24-284572.png",
+        "base64_img_data": "",
+        "file_attributes": {},
+        "regions": {
+            "left-T-intersect-1": {
+                "shape_attributes": {
+                    "name": "polygon",
+                    "all_points_x": [
+                        221,
+                        271,
+                        271,
+                        221
+                    ],
+                    "all_points_y": [
+                        190,
+                        190,
+                        240,
+                        240
+                    ]
+                },
+                "region_attributes": {}
+            }
+        }
+    }
+}
