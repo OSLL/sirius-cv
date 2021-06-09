@@ -96,9 +96,7 @@ class RoadSignDetector(RoadSignDetectorPattern):
 					processed_image.append(copy.copy(self.query_img))
 					cv2.putText(processed_image[-1], sign[1], (center[0]-add_size_x, center[2]-add_size_y-10), cv2.FONT_ITALIC, 0.4, (255,255,255), 1, cv2.LINE_AA)
 					cv2.rectangle(processed_image[-1], (center[0]-add_size_x, center[2]-add_size_y), (center[1]+add_size_x, center[3]+add_size_y), (255, 255, 255), 2)
-					markup.append((center[0]-add_size_x, center[2]-add_size_y))
-					markup.append((center[1]+add_size_x, center[3]+add_size_y))
-					markup.append(sign[1])
+					markup.append([(center[0]-add_size_x, center[2]-add_size_y), (center[1]+add_size_x, center[3]+add_size_y), sign[1]])
 		if(create_markup): return self.query_img, processed_image, markup
 		else: return self.query_img, processed_image
 		

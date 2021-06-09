@@ -34,11 +34,10 @@ def processVideo(rsd, video_folder, video, output_folder, vid_num, vids_total, t
         try:
             frame, processed, markup = processFrame(rsd, frame)
             if(markup):
-                for proc in processed:
-                    saveFrame(frame, proc, markup, output_folder, str(total_found))
+                for i, proc in enumerate(processed):
+                    saveFrame(frame, proc, markup[i], output_folder, str(total_found))
                     total_found += 1
             print("Processing video", vid_num, "from", str(vids_total)+";", "Frame", current_frame, "from", str(total_frames)+";", "Found", total_found, "sign(s)")
-            #self._printProgressBar(current_frame, total_frames)
             current_frame += 1
         except cv2.error:
             break
@@ -51,7 +50,7 @@ def defineSign(rsd, sign):
 
 def generateMarkup(frame_data, sign_name):
     image_filename = args.output+"/"+str(current_ms_time())+".png"
-    print(image_filename)
+    print(image_filename, end=": ")
     cv2.imwrite(image_filename, frame_data[0])
     sign_markup = {"fileref": "", "size": os.path.getsize(image_filename), "filename": os.path.basename(image_filename), "base64_img_data": "", "file_attributes": {}, "regions": {}}
     min_x = int(frame_data[2][0][0])
@@ -106,26 +105,27 @@ elif(args.action == "select"):
     frames.sort(key=lambda x: int(x[:-7]))
     output_markup = {}
     for frame in frames:
-        print("Working on", frame)
+        print("Working on", frame, end=": ")
         with open(args.input+"/"+frame, "rb") as file:
             frame_data = pickle.load(file)
+        print(frame_data[2])
         cv2.imshow("DatasetCreator", frame_data[1])
         save_and_stop = False
         while(True):
                 key_code = cv2.waitKey()
                 if(key_code == ord('1')):
                     sign_markup, image_filename = generateMarkup(frame_data, 'Left-T-intersection')
-                    print(sign_markup)
+                    print("Added 'Left-T-intersection'")
                     output_markup[os.path.basename(image_filename)] = sign_markup
                     break
                 if(key_code == ord('2')):
                     sign_markup, image_filename = generateMarkup(frame_data, 'T-intersection')
-                    print(sign_markup)
+                    print("Added 'T-intersection'")
                     output_markup[os.path.basename(image_filename)] = sign_markup
                     break
                 if(key_code == ord('3')):
                     sign_markup, image_filename = generateMarkup(frame_data, 'Right-T-intersection')
-                    print(sign_markup)
+                    print("Added 'Right-T-intersection'")
                     output_markup[os.path.basename(image_filename)] = sign_markup
                     break
 
@@ -133,7 +133,7 @@ elif(args.action == "select"):
                     break
                 if(key_code == ord('s')):
                     sign_markup, image_filename = generateMarkup(frame_data, frame_data[2][2])
-                    print(sign_markup)
+                    print("Added '"+frame_data[2][2]+"'")
                     output_markup[os.path.basename(image_filename)] = sign_markup
                     break
                 if(key_code == ord('e')):
