@@ -58,7 +58,7 @@ def generateMarkup(frame_data, sign_name):
     min_y = int(frame_data[2][0][1])
     max_x = int(frame_data[2][1][0])
     max_y = int(frame_data[2][1][1])
-    sign_markup["regions"][sign_name+'-1'] = {"shape-attributes": {"name": "polygon", "all_points_x": [min_x, max_x, min_x, max_x], "all_points_y": [min_y, min_y, max_y, max_y]}, "region-attributes": {}}
+    sign_markup["regions"][sign_name+'-1'] = {"shape-attributes": {"name": "polygon", "all_points_x": [min_x, max_x, max_x, min_x], "all_points_y": [min_y, min_y, max_y, max_y]}, "region-attributes": {}}
     return sign_markup, image_filename
 
 parser = argparse.ArgumentParser(description="OpenCV dataset creator")
