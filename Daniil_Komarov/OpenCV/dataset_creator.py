@@ -78,7 +78,7 @@ defineSign(rsd, ("No-left-turn",    "signs/no-left-turn.png"))
 #defineSign(rsd, ("PARKING",         "signs/parking.png"))
 defineSign(rsd, ("Stop",            "signs/stop.png"))
 defineSign(rsd, ("T-intersection",  "signs/t-intersection.png"))
-defineSign(rsd, ("traffic_light",   "signs/t-light-ahead.png"))
+defineSign(rsd, ("traffic-light",   "signs/t-light-ahead.png"))
 
 if(args.action == "render"):
     files = os.listdir(args.input)
@@ -109,22 +109,21 @@ elif(args.action == "select"):
         print("Working on", frame)
         with open(args.input+"/"+frame, "rb") as file:
             frame_data = pickle.load(file)
-        os.remove(args.input+"/"+frame)
         cv2.imshow("DatasetCreator", frame_data[1])
         save_and_stop = False
         while(True):
                 key_code = cv2.waitKey()
-                if(frame_data[2][2] == 'T-intersection' and key_code == ord('1')):
+                if(key_code == ord('1')):
                     sign_markup, image_filename = generateMarkup(frame_data, 'Left-T-intersection')
                     print(sign_markup)
                     output_markup[os.path.basename(image_filename)] = sign_markup
                     break
-                if(frame_data[2][2] == 'T-intersection' and key_code == ord('2')):
+                if(key_code == ord('2')):
                     sign_markup, image_filename = generateMarkup(frame_data, 'T-intersection')
                     print(sign_markup)
                     output_markup[os.path.basename(image_filename)] = sign_markup
                     break
-                if(frame_data[2][2] == 'T-intersection' and key_code == ord('3')):
+                if(key_code == ord('3')):
                     sign_markup, image_filename = generateMarkup(frame_data, 'Right-T-intersection')
                     print(sign_markup)
                     output_markup[os.path.basename(image_filename)] = sign_markup
@@ -132,7 +131,7 @@ elif(args.action == "select"):
 
                 if(key_code == ord('d')):
                     break
-                if(frame_data[2][2] != 'T-intersection' and key_code == ord('s')):
+                if(key_code == ord('s')):
                     sign_markup, image_filename = generateMarkup(frame_data, frame_data[2][2])
                     print(sign_markup)
                     output_markup[os.path.basename(image_filename)] = sign_markup
@@ -141,6 +140,7 @@ elif(args.action == "select"):
                     save_and_stop = True
                     break
         if(save_and_stop): break
+        else: os.remove(args.input+"/"+frame)
 
     old_data = {}
     if(os.path.exists(args.output+"/output.json")):
