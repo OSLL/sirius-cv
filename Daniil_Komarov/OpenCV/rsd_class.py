@@ -75,7 +75,7 @@ class RoadSignDetector(RoadSignDetectorPattern):
 	
 	def run(self, create_markup=False):
 		markup = []
-		self.processed_image = copy.copy(self.query_img)
+		processed_image = []
 		for sign in self.test_img:
 			t_kp, t_des, q_kp, q_des = self.detect(sign[0])
 			success = False
@@ -93,11 +93,14 @@ class RoadSignDetector(RoadSignDetectorPattern):
 					y_size = center[3]-center[2]
 					add_size_x = int(x_size/100*40)
 					add_size_y = int(y_size/100*40)
-					cv2.putText(self.processed_image, sign[1], (center[0]-add_size_x, center[2]-add_size_y-10), cv2.FONT_ITALIC, 0.4, (255,255,255), 1, cv2.LINE_AA)
-					cv2.rectangle(self.processed_image, (center[0]-add_size_x, center[2]-add_size_y), (center[1]+add_size_x, center[3]+add_size_y), (255, 255, 255), 2)
-					markup.append([(center[0]-add_size_x, center[2]-add_size_y), (center[1]+add_size_x, center[3]+add_size_y), sign[1]])
-		if(create_markup): return self.query_img, self.processed_image, markup
-		else: return self.query_img, self.processed_image
+					processed_image.append(copy.copy(self.query_img))
+					cv2.putText(processed_image[-1], sign[1], (center[0]-add_size_x, center[2]-add_size_y-10), cv2.FONT_ITALIC, 0.4, (255,255,255), 1, cv2.LINE_AA)
+					cv2.rectangle(processed_image[-1], (center[0]-add_size_x, center[2]-add_size_y), (center[1]+add_size_x, center[3]+add_size_y), (255, 255, 255), 2)
+					markup.append((center[0]-add_size_x, center[2]-add_size_y))
+					markup.append((center[1]+add_size_x, center[3]+add_size_y))
+					markup.append(sign[1])
+		if(create_markup): return self.query_img, processed_image, markup
+		else: return self.query_img, processed_image
 		
 	def changeQueryImage(self, query_img):
 		self.query_img = query_img
